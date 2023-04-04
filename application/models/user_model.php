@@ -13,7 +13,6 @@ class User_model extends CI_Model {
                 return $user; // Login berhasil, mengembalikan data pengguna
             }
         }else{
-            $this->session->unset_userdata('admin');
             return null;
         }
 

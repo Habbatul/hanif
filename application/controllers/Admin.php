@@ -53,6 +53,8 @@ class Admin extends CI_Controller {
             // Redirect ke halaman beranda atau halaman yang diinginkan setelah login berhasil
             redirect('admin');
         } else {
+            $this->session->unset_userdata('admin');
+            $this->session->sess_destroy();
             // Login gagal, tampilkan pesan error atau redirect ke halaman login
             redirect('/?error= username atau password kamu salah, cek inputan');
         }

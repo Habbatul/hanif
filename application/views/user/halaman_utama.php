@@ -165,7 +165,7 @@ if(isset($error)){
 					typingDelay: 100,
 					deletingDelay: 50,
 				}">
-				<span x-html="text[index].substring(0, charIndex) + '<span x-show=\'charIndex%2==0\' class=\'xl:text-[4.8rem] text-[1.7rem] font-bold\'>  |</span>'" x-init="
+				<span x-html="text[index].substring(0, charIndex) + '<span x-show=\'charIndex%2==0\' class=\'xl:text-[4.8rem] md:text-[2.6rem] text-[1.7rem] font-bold\'>  |</span>'" x-init="
 					setInterval(() => {
 						if (isDeleting) {
 							charIndex--;
@@ -236,7 +236,7 @@ if(isset($error)){
 		<!--Overlay-->
 		<div class="overflow-auto" style="background-color: rgba(0,0,0,0.5);backdrop-filter: blur(3px);" x-show="showModal" :class="{ 'fixed backdrop-blur-sm inset-0 z-10 flex items-center justify-center': showModal }">
 			<!--Dialog-->
-			<div class="bg-hqhan w-11/12 md:max-w-md mx-auto rounded shadow-lg py-4 text-left px-6" x-show="showModal" @click.away="showModal = false" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
+			<div class="border-black border-solid border-8 bg-hqhan w-11/12 md:max-w-md mx-auto rounded shadow-lg py-4 text-left px-6" x-show="showModal" @click.away="showModal = false" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
 
 				<!--Title-->
 				<div class="flex justify-between items-center pb-3">
@@ -254,11 +254,11 @@ if(isset($error)){
 				<div  class="text-center mt-4">
 					<ul class="pb-5">
 						<li><label class="text-xl font-bold text-gray-950 font-Inter">Username : </label></li>
-						<li><input type="text" name="username" class="font-Inter p-2 border-2 border-white rounded-lg bg-gray-100 text-md focus:outline-none focus:border-black focus:ring-black "></li>
+						<li><input type="text" name="username" class="font-Inter font-medium p-2 border-2 border-white rounded-lg bg-gray-100 text-md focus:outline-none focus:border-black focus:ring-black "></li>
 					</ul>
 					<ul class="pb-5">
 						<li><label class="text-xl font-bold text-gray-950 font-Inter">Password : </label></li>
-						<li><input type="password" name="password" class="font-Inter p-2 border-2 border-white rounded-lg bg-gray-100 text-md focus:outline-none focus:border-black focus:ring-black "></li>
+						<li><input type="password" name="password" class="font-Inter font-semibold p-2 border-2 border-white rounded-lg bg-gray-100 text-md focus:outline-none focus:border-black focus:ring-black "></li>
 					</ul>					
 				</div>
 				
@@ -338,7 +338,7 @@ if(isset($error)){
         <!-- content -->
         <div class="flex flex-col justify-center items-center">
             <div class="flex">
-                <img :src="'upload/' + todoGambar" :alt="todoGambar" class="w-full max-w-md h-[28rem] object-cover shadow-[0_4px_10px_0.5px_rgba(0,0,0,0.5)]">
+                <img :src="'upload/' + todoGambar" :alt="todoGambar" class="w-full max-w-lg h-[28rem] md:max-h-full max-h-[18.5rem] object-cover shadow-[0_4px_10px_0.5px_rgba(0,0,0,0.5)] rounded-md">
             </div>
             <div class="flex justify-center">
 				<h3 class="pt-5 text-xl pb-5 md:text-4xl md:pb-5 font-Shadows-Into-Light font-extrabold" x-text="todoTitle"></h3>
