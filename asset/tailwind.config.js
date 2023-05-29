@@ -9,7 +9,9 @@ module.exports = {
     // Some useful comment
     fontFamily: {
       'Inter': ['Inter', 'sans-serif'],
-      'IBM-Plex-Sans': ['IBM Plex Sans', 'sans-serif']
+      'IBM-Plex-Sans': ['IBM Plex Sans', 'sans-serif'],
+      'Shadows-Into-Light' : ['Shadows Into Light', 'cursive'],
+      'Kaushan-Script' : ['Kaushan Script', 'cursive'],
     },
     screens:{
         'sm': '640px',

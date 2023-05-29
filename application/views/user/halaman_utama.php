@@ -20,7 +20,9 @@
 	
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Inter:wght@300;400;500;600;700&family=Shadows+Into+Light&family=Kaushan+Script&display=swap" rel="stylesheet">
+
+	
 
 	<style>
         [x-cloak] {
@@ -46,24 +48,76 @@
     </style>
 </head>
 
-<body x-data="{ 'showModal': false, 'showModalDel' : false, selectedValue: '',selectedValue2: '', todos: [],
-	fetchData() {
-     fetch('http://localhost/hanif/api/portofolio', {method:'get'})
-       .then(response => response.json())
-       .then(data => {
-         console.log(data);
-         this.todos = data.result;
-       })
-       .catch(error => console.error(error));
-   },
-   init() {
-       this.fetchData();
+<body x-data="{ 'showModal': false, 'showModalDel' : false, 'showModalDetail' : true, selectedValue: '',selectedValue2: '', todos: [],
+	async fetchData() {
+		try {
+			const response = await fetch('http://localhost/hanif/api/portofolio', { method: 'post' });
+			const data = await response.json();
+			console.log(data);
+			this.todos = data.result;
+		} catch (error) {
+			console.error(error);
+		}
+	},
+	async init() {
+		await this.fetchData();
    }
-}" @keydown.escape="showModal = false" x-cloak class="warna-heroSect" >
+}" @keydown.escape="showModal = false" x-cloak class="warna-heroSect" style="overflow-x:hidden;">
    <!-- Awal -->
 
-	<!--nav bar -->
 
+	<!--nav bar -->
+	<div x-if="showModal || showModalDel || showModalDetail">
+	</div>
+	
+	<div x-if="!showModal ||!showModalDel || !showModalDetail" x-data="{ isSmallScreen: window.innerWidth < 728, showMenu: false }" 
+		x-init="() => {
+			function updateScreenSize() {
+				isSmallScreen = window.innerWidth < 728;
+			}
+			window.addEventListener('resize', updateScreenSize);
+		}">
+
+		<div x-data="{ scrolled: false }" @scroll.window="scrolled = (window.pageYOffset > 0)">
+			<nav @click.outside="showMenu=false" x-show="!(showModal || showModalDel || showModalDetail)" :class="{ 'bg-opacity-60 bg-gray-800 backdrop-filter backdrop-blur-lg fixed w-full z-50 pb-6 pt-6 shadow-[0_4px_10px_0.5px_rgba(0,0,0,0.5)] ease-in duration-500': scrolled, 
+					'warna-navbar backdrop-filter backdrop-blur-lg fixed w-full z-50 pb-6 pt-6 ease-in duration-500': !scrolled }"
+					x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" 
+					x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-transition:leave="ease-out duration-300">
+
+					<a href="#" class="absolute ml-6 md:ml-[2rem] xl:ml-[3rem] mt-1 font-Inter font-bold text-2xl text-white  hover:text-green-100 hover:cursor-pointer">LOGOUT</a>
+				<ul class="flex items-center justify-end mx-10 lg:mx-12 mt-1">
+					
+						<li x-show="!isSmallScreen" class="ml-4 font-Inter font-medium text-xl text-white"><a href="#canvas">Profile</a></li>
+						<li x-show="!isSmallScreen" class="ml-4 font-Inter font-medium text-xl text-white"><a href="#quotes">Quotes</a></li>
+						<li x-show="!isSmallScreen" class="ml-4 lg:mr-5 font-Inter font-medium text-xl text-white"><a a href="#project">Portofolio</a></li>
+
+				
+					<li>
+				<button @click="showMenu = !showMenu" x-show="isSmallScreen" class="text-white focus:outline-none">
+					<svg x-show="!showMenu" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+					  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+					</svg>
+				  </button>
+				</li>
+		
+				<ul x-show="showMenu" class="relative top-full right-0 pt-3 pb-2 px-4 max-w-[8rem] bg-opacity-10" x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" >
+					<li class="mb-5 mt-[-0.5rem]"><a href="#canvas" class="block font-Inter font-medium text-xl text-white hover:text-green-100">Profile</a></li>
+					<li class="mb-5"><a href="#quotes" class="block font-Inter font-medium text-xl text-white hover:text-green-100">Quotes</a></li>
+					<li class="mb-5"><a href="#project" class="block lg:mr-5 font-Inter font-medium text-xl text-white hover:text-green-100">Porto</a></li>
+					<li class="mb-[-1.3rem]">
+						<button @click="showMenu = !showMenu" x-show="isSmallScreen" class="text-white focus:outline-none right-0">
+							<svg x-show="showMenu" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+							  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+							</svg>
+						  </button>
+					</li>
+				  </ul>
+			  
+		
+
+			</nav>
+		</div>
+	</div>
 	<!--nav bar end -->
 
 	<!-- ini adalah canvas three js sebagai hero section-->
@@ -79,10 +133,10 @@
 		 2xl:text-[5rem] 2xl:leading-[5.5rem] xl:text-[4rem] xl:leading-[4.3rem] 
 		 xl:max-w-lg font-Inter text-white inline-block 2xl:mb-20 xl:mb-0
 		 md:text-[3.3rem] md:leading-[3.6rem] md:max-w-[24rem]">
-			<span>Web Portofolio ini dibangun menggunakan 
+			<span>I Have Many Skill Including Developing	
 
 				<div x-data="{ 
-					text: ['AlpineJS', 'TailwindCSS', 'ThreeJS', 'Koneksi.php'],
+					text: ['Website', 'DesktopApp', 'Android', 'Game 3D/2D'],
 					index: 0,
 					charIndex: 0,
 					isDeleting: false,
@@ -244,6 +298,51 @@
 
 <!-- Modal untuk hapus Selesai -->
 
+
+<!-- modal detail -->
+<!-- Letakkan modal di luar konten utama -->
+<div class="fixed top-0 left-0 w-full h-full flex justify-center md:items-start items-center overflow-y-auto z-50 pt-5 pb-5" style="background-color: rgba(0,0,0,0.5);backdrop-filter: blur(5px);" x-show="showModalDetail">
+    <!--Dialog Wrapper-->
+    <div class="bg-hqhan w-11/12 md:max-w-[40rem] max-w-md mx-auto rounded shadow-lg py-4 text-left px-6 my-auto" x-show="showModalDetail" @click.away="showModalDetail = false" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
+        <!--Title-->
+        <div class="flex justify-between items-center pb-3">
+            <p class="text-2xl font-bold">Detail Proyek</p>
+            <div class="cursor-pointer" @click="showModalDetail = false">
+                <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                    <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+                </svg>
+            </div>
+        </div>
+        <script>
+            const baseUrl = "<?php echo base_url(); ?>";
+        </script>
+        <!-- content -->
+        <div x-init="fetchData()" class="flex flex-col justify-center items-center">
+            <div class="flex">
+                <template x-for="todo in todos.filter(item => item.id.includes(selectedValue))" :key="todo.id">
+                    <img :src="baseUrl + 'upload/' + todo.gambar" :alt="todo.gambar" class="w-full max-w-md h-[28rem] object-cover shadow-[0_4px_10px_0.5px_rgba(0,0,0,0.5)]">
+                </template>
+            </div>
+            <div class="flex justify-center">
+                <template x-for="todo in todos.filter(item => item.id.includes(selectedValue))" :key="todo.id">
+                    <h3 class="pt-5 text-xl pb-5 md:text-4xl md:pb-5 font-Shadows-Into-Light font-extrabold" x-text="todo.title"></h3>
+                </template>
+            </div>
+            <div class="flex">
+				<div class="hijauTua rounded-lg">
+					<template x-for="todo in todos.filter(item => item.id.includes(selectedValue))" :key="todo.id">
+						<p class=" text-white m-5 text-justify text-sm md:text-xl" x-text="todo.description"></p>
+					</template>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
 <!-- Quotes dan tombol di section ini -->
 
 <!--
@@ -300,22 +399,25 @@
 
 <!-- kelompok card -->
 <div id="project" style="scroll-margin-top: 80px" class="latarSVG">
-	<div class="flex flex-wrap justify-center lg:pt-24 pt-10 md:pt-20 xl:pb-32 pb-10 bg-[url('/metaball.svg')] " style="background-size:100% 100%; background-repeat: no-repeat;">
-		<img src="asset/ProjecttSaya .png" class="star flex 2xl:h-28 xl:h-[5rem] md:h-[5rem] md:mb-16 xl:mb-24 h-14 lg:mb-20 mb-10">
-	  
+	<div class="flex flex-wrap justify-center lg:pt-24 pt-12	 md:pt-20 xl:pb-32 pb-10 bg-[url('/metaball.svg')] " style="background-size:100% 100%; background-repeat: no-repeat;">
+		<div class="star flex  md:mb-16 xl:mb-24 h-14 lg:mb-20 mb-16">
+			<h1 class="font-Kaushan-Script font-extrabold 2xl:text-6xl xl:text-6xl md:text-6xl text-4xl bg-gradient-to-r from-[rgba(0,247,255,0.71)] to-[#007067] text-transparent bg-clip-text
+			w-[19rem] h-[98px] md:w-[33.5rem] md:h-[80px] text-center">My Portofolio Project</h1>
+		</div>
+	  <div class="w-full"></div>
 
-	<div x-init="init()" class="lg:mx-36 3xl:mx-80 2xl:mx-40 md:mx-10 flex flex-wrap justify-center">
+	<div x-init="init()" class="star lg:mx-36 3xl:mx-80 2xl:mx-40 md:mx-10 flex flex-wrap justify-center">
 	
 			<template x-for="(todo, index) in todos" :key="index">
 				
-				<div class=" xl:min-w-[24.5rem] lg:mb-24 mb-10 mx-10 2xl:mx-10 xl:mx-10 overflow-hidden rounded-xl bg-hqhan max-w-sm max-h-sm shadow-[0_2px_10px_1px_rgba(0,0,0,0.5)] hover:opacity-80 hover:cursor-pointer">	
-					<img src="https://source.unsplash.com/320x250?programming" alt="Programming" class="pointer-events-none mx-auto mt-8  md:rounded-xl"/>
+				<div @click="showModalDetail= true" x-on:click="selectedValue = todo.id" class="xl:min-w-[24.5rem] lg:mb-24 mb-10 mx-10 2xl:mx-10 xl:mx-10 overflow-hidden rounded-xl bg-hqhan max-w-[18rem] md:max-w-[24rem] md:min-w-[24rem] max-h-sm shadow-[0_2px_10px_1px_rgba(0,0,0,0.5)] hover:opacity-80 hover:cursor-pointer">	
+				<img :src="baseUrl + 'upload/' + todo.gambar" :alt="todo.gambar" class="pointer-events-none mx-auto mt-8  md:rounded-xl w-[320px] h-[240px] object-cover"/>
 					<div class="py-5 md:px-7 px-4 ">
-						<h3 x-text="todo.title" class="text-center mb-3 text-white font-bold text-lg"></h3>
+						<h3 x-text="todo.title" class="text-center mb-3 text-green-950 font-bold text-xl"></h3>
 						<div class="hijauTua rounded-lg">
-							<p x-text="todo.description" class=" min-h-[6rem] text-white py-3 px-4 leading-tight font-normal text-sm text-secondary text-justify">
-								...
-								<span class="font-bold"> Klik Selengkapnya</span>
+						<p x-data="{ description: todo.description }" 
+							x-html="(description.length > 140) ? description.slice(0, 140) + '<span class=\'font-bold\'>... Klik Selengkapnya</span>' : description" 
+							class="min-h-[6rem] text-white py-3 px-4 leading-tight font-normal text-sm text-secondary text-justify">
 							</p>
 						</div>
 					</div>
@@ -323,7 +425,6 @@
 				
 			</template>
 			
-
 </div>
 </div>
 </div>
