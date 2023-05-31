@@ -134,7 +134,11 @@
 
 	<!-- tombol Add -->
 	<div class="flex items-center justify-center">
-		<a @click="showModalAdd=true" class="text-stone-50 my-10 hover:font-extrabold hover:text-teal-950 text-3xl cursor-pointer  font-bold font-IBM-Plex-Sans"> Tambah Portofolio </a>
+		<a @click="showModalAdd=true" class="text-gray-950 hover:text-white no-underline my-10 hover:font-extrabold  text-3xl cursor-pointer  font-bold font-IBM-Plex-Sans">
+			<div class="bg-teal-700 px-4 py-2 rounded-3xl hover:bg-black  ">
+			 	Tambah Portofolio 
+			</div>
+		</a>
 	</div>
 
 

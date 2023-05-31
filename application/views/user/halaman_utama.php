@@ -334,13 +334,11 @@ if(isset($error)){
                 </svg>
             </div>
         </div>
-        <script>
-            const baseUrl = "<?php echo base_url(); ?>";
-        </script>
+
         <!-- content -->
         <div class="flex flex-col justify-center items-center">
             <div class="flex">
-                <img :src="baseUrl + 'upload/' + todoGambar" :alt="todoGambar" class="w-full max-w-md h-[28rem] object-cover shadow-[0_4px_10px_0.5px_rgba(0,0,0,0.5)]">
+                <img :src="'upload/' + todoGambar" :alt="todoGambar" class="w-full max-w-md h-[28rem] object-cover shadow-[0_4px_10px_0.5px_rgba(0,0,0,0.5)]">
             </div>
             <div class="flex justify-center">
 				<h3 class="pt-5 text-xl pb-5 md:text-4xl md:pb-5 font-Shadows-Into-Light font-extrabold" x-text="todoTitle"></h3>
@@ -425,7 +423,7 @@ if(isset($error)){
 			<template x-for="(todo, index) in todos" :key="index">
 				
 				<div @click="showModalDetail= true" x-on:click="selectedValue = todo.id" class="xl:min-w-[24.5rem] lg:mb-24 mb-10 mx-10 2xl:mx-10 xl:mx-10 overflow-hidden rounded-xl bg-hqhan max-w-[18rem] md:max-w-[24rem] md:min-w-[24rem] max-h-sm shadow-[0_2px_10px_1px_rgba(0,0,0,0.5)] hover:opacity-80 hover:cursor-pointer">	
-				<img :src="baseUrl + 'upload/' + todo.gambar" :alt="todo.gambar" class="pointer-events-none mx-auto mt-8  md:rounded-xl w-[320px] h-[240px] object-cover"/>
+				<img :src="'upload/' + todo.gambar" :alt="todo.gambar" class="pointer-events-none mx-auto mt-8  md:rounded-xl w-[320px] h-[240px] object-cover"/>
 					<div class="py-5 md:px-7 px-4 ">
 						<h3 x-text="todo.title" class="text-center mb-3 text-green-950 font-bold text-xl"></h3>
 						<div class="hijauTua rounded-lg">
