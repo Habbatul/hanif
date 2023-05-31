@@ -4,7 +4,9 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-aspect-ratio'),
+  ],
   theme: {
     // Some useful comment
     fontFamily: {

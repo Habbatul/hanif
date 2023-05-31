@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<?php
+if(isset($error)){
+    echo "<script>alert('" . $error . "');window.location.href='".base_url()."';</script>";
+}
+?>
 
 <html lang="en" class="scroll-smooth overflow-x-hidden">
 <head >
@@ -44,11 +49,22 @@
 		.scale-100 {
 			transform: scale(1);
 		}
+
+		.bg-ini{
+			background:black;
+			/* atau background-size: 100% 100%; */
+		}
+		.bg-hero{
+			background-image: url('asset/dragon-scales.svg');
+			/* atau background-size: 100% 100%; */
+			
+		}
+		
 		
     </style>
 </head>
 
-<body x-data="{ 'showModal': false, 'showModalDel' : false, 'showModalDetail' : true, selectedValue: '',selectedValue2: '', todos: [],
+<body x-data="{ 'showModal': false, 'showModalDel' : false, 'showModalDetail' : false, selectedValue: '',selectedValue2: '', todos: [],
 	async fetchData() {
 		try {
 			const response = await fetch('http://localhost/hanif/api/portofolio', { method: 'post' });
@@ -61,10 +77,16 @@
 	},
 	async init() {
 		await this.fetchData();
-   }
-}" @keydown.escape="showModal = false" x-cloak class="warna-heroSect" style="overflow-x:hidden;">
+   }, todoGambar:'', todoTitle:'',todoDescription:'',todoLink:'',
+}" @keydown.escape="showModal = false" x-cloak style="overflow-x:hidden;" x-init="fetchData()">
+<div class="bg-hero">
    <!-- Awal -->
-
+<template x-if="showModalDetail">
+   <template x-for="todo in todos.filter(item => item.id.toString() === selectedValue.toString())" :key="todo.id">
+		<div x-init="todoGambar=todo.gambar;todoTitle=todo.title;todoDescription=todo.description;todoLink=todo.link;">
+		</div>
+   </template>
+</template>
 
 	<!--nav bar -->
 	<div x-if="showModal || showModalDel || showModalDetail">
@@ -84,10 +106,10 @@
 					x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" 
 					x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-transition:leave="ease-out duration-300">
 
-					<a href="#" class="absolute ml-6 md:ml-[2rem] xl:ml-[3rem] mt-1 font-Inter font-bold text-2xl text-white  hover:text-green-100 hover:cursor-pointer">LOGOUT</a>
+					<a href="#" class="absolute ml-6 md:ml-[2rem] xl:ml-[3rem] mt-1 font-Inter font-bold text-2xl text-white  hover:text-green-100 hover:cursor-pointer">HQHAN</a>
 				<ul class="flex items-center justify-end mx-10 lg:mx-12 mt-1">
 					
-						<li x-show="!isSmallScreen" class="ml-4 font-Inter font-medium text-xl text-white"><a href="#canvas">Profile</a></li>
+						<li x-show="!isSmallScreen" class="ml-4 font-Inter font-medium text-xl text-white"><a href="#hero">Profile</a></li>
 						<li x-show="!isSmallScreen" class="ml-4 font-Inter font-medium text-xl text-white"><a href="#quotes">Quotes</a></li>
 						<li x-show="!isSmallScreen" class="ml-4 lg:mr-5 font-Inter font-medium text-xl text-white"><a a href="#project">Portofolio</a></li>
 
@@ -101,7 +123,7 @@
 				</li>
 		
 				<ul x-show="showMenu" class="relative top-full right-0 pt-3 pb-2 px-4 max-w-[8rem] bg-opacity-10" x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" >
-					<li class="mb-5 mt-[-0.5rem]"><a href="#canvas" class="block font-Inter font-medium text-xl text-white hover:text-green-100">Profile</a></li>
+					<li class="mb-5 mt-[-0.5rem]"><a href="#hero" class="block font-Inter font-medium text-xl text-white hover:text-green-100">Profile</a></li>
 					<li class="mb-5"><a href="#quotes" class="block font-Inter font-medium text-xl text-white hover:text-green-100">Quotes</a></li>
 					<li class="mb-5"><a href="#project" class="block lg:mr-5 font-Inter font-medium text-xl text-white hover:text-green-100">Porto</a></li>
 					<li class="mb-[-1.3rem]">
@@ -121,52 +143,52 @@
 	<!--nav bar end -->
 
 	<!-- ini adalah canvas three js sebagai hero section-->
-		<canvas id="canvas" class="shadow-[0_4px_10px_0.5px_rgba(0,0,0,0.5)] rounded-3xl" style="margin-top: 6.4rem;scroll-margin-top: 80px"></canvas>
+		<canvas id="canvas" class="shadow-[0_4px_10px_0.5px_rgba(0,0,0,0.5)] rounded-3xl" style="margin-top: 6.4rem;"></canvas>
 	<!-- End-->
 
 	<!--wis terlanjur dikasih section gaopo biar gampang nata position absolute -->
-	<section class="max-w-full relative md:pb-[11rem] lg:pb-0 pb-[4rem]">
+	<section id="hero" class="max-w-full relative md:pb-[11rem] lg:pb-0 pb-[4rem]" style="scroll-margin-top: 100px">
 
 	<div class="scrollAnimate2 bg-white md:mt-20 mt-[2rem] 2xl:max-w-xs mb-5 md:max-w-[12rem] md:max-h-[1rem] lg:max-h-20 xl:max-w-[16rem] max-w-[8rem] max-h-[0.8rem]">&nbsp;</div>
-		<div class="stackUsed md:ml-10 md:mt-2 lg:mt-8 2xl:max-w-xl 2xl5:text-[6rem] 2xl5:leading-[6.5rem] 2xl5:max-w-2xl
+		<div class="stackUsed md:ml-10 md:mt-2 lg:mt-8 2xl:max-w-xl 2xl5:text-[6rem] 2xl5:leading-[6.6rem] 2xl5:max-w-2xl
 		text-[2rem] leading-[2.4rem] ml-4 max-w-[15rem]
 		 2xl:text-[5rem] 2xl:leading-[5.5rem] xl:text-[4rem] xl:leading-[4.3rem] 
 		 xl:max-w-lg font-Inter text-white inline-block 2xl:mb-20 xl:mb-0
 		 md:text-[3.3rem] md:leading-[3.6rem] md:max-w-[24rem]">
 			<span>I Have Many Skill Including Developing	
 
-				<div x-data="{ 
+			<div x-data="{ 
 					text: ['Website', 'DesktopApp', 'Android', 'Game 3D/2D'],
 					index: 0,
 					charIndex: 0,
 					isDeleting: false,
 					typingDelay: 100,
 					deletingDelay: 50,
-				  }">
-					<span x-text="text[index].substring(0, charIndex) + ' |' " x-init="
-					  setInterval(() => {
+				}">
+				<span x-html="text[index].substring(0, charIndex) + '<span x-show=\'charIndex%2==0\' class=\'xl:text-[4.8rem] text-[1.7rem] font-bold\'>  |</span>'" x-init="
+					setInterval(() => {
 						if (isDeleting) {
-						  charIndex--;
-						  if (charIndex === 0) {
-							isDeleting = false;
-							index = (index + 1) % text.length;
-						  }
+							charIndex--;
+							if (charIndex === 0) {
+								isDeleting = false;
+								index = (index + 1) % text.length;
+							}
 						} else {
-						  charIndex++;
-						  if (charIndex === text[index].length) {
-							isDeleting = true;
-						  }
+							charIndex++;
+							if (charIndex === text[index].length) {
+								isDeleting = true;
+							}
 						}
-					  }, isDeleting ? deletingDelay : typingDelay)
-					" class="absolute mt-3 2xl5:mt-[2rem]"></span>
-				  </div>
+					}, isDeleting ? deletingDelay : typingDelay)"
+					class="absolute font-Inter"></span>
+			</div>
 
 			</span>
 		</div>
 		
 
-		
-		<div class="gambar-han scrollAnimate absolute right-0 flex group hover:cursor-pointer 2xl:mr-[39rem] 2xl:mt-[-15rem] 
+		<!-- Button Login -->
+		<div @click="showModal=true" class="gambar-han scrollAnimate absolute right-0 flex group hover:cursor-pointer 2xl:mr-[39rem] 2xl:mt-[-15rem] 
 		md:mt-[6.7rem] md:mr-[34rem] xl:mr-[30rem] xl:mt-[-9rem] 2xl5:mt-[-21rem] 2xl5:mr-[46rem]
 		mt-[5.4rem] mr-[12.3rem]">
 			<img class="2xl5:h-[20rem] 2xl:h-[15rem] xl:h-[13rem] md:h-[11rem] h-[8rem]
@@ -209,16 +231,16 @@
 
 
 
-	<!-- Ini Modal untuk ubah -->
+	<!-- Ini Modal untuk Login -->
     <section class="flex flex-wrap p-4 h-full items-center mb-32 justify-center">
 		<!--Overlay-->
 		<div class="overflow-auto" style="background-color: rgba(0,0,0,0.5);backdrop-filter: blur(3px);" x-show="showModal" :class="{ 'fixed backdrop-blur-sm inset-0 z-10 flex items-center justify-center': showModal }">
 			<!--Dialog-->
-			<div class="bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg py-4 text-left px-6" x-show="showModal" @click.away="showModal = false" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
+			<div class="bg-hqhan w-11/12 md:max-w-md mx-auto rounded shadow-lg py-4 text-left px-6" x-show="showModal" @click.away="showModal = false" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
 
 				<!--Title-->
 				<div class="flex justify-between items-center pb-3">
-					<p class="text-2xl font-bold">Ubah Data</p>
+					<p class="text-2xl font-bold">Login</p>
 					<div class="cursor-pointer z-50" @click="showModal = false">
 						<svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
 							<path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
@@ -228,23 +250,22 @@
 				</div>
 
 				<!-- content -->
-				<form action="TodolistServiceTest" method="post">
-					<input type="hidden" name="id" x-bind:value="selectedValue">
+				<form action="admin/process_login" method="post">
 				<div  class="text-center mt-4">
-					<ul>
-						<li><label class="text-lg font-bold text-blue-500">Todo : </label></li>
-						<li><input type="text"name="todo"  x-bind:value="selectedValue2" class="font-mono p-2 border-2 border-blue-500 rounded-lg bg-gray-100 text-base focus:outline-none focus:border-green-500 focus:ring-green-500 "></li>
+					<ul class="pb-5">
+						<li><label class="text-xl font-bold text-gray-950 font-Inter">Username : </label></li>
+						<li><input type="text" name="username" class="font-Inter p-2 border-2 border-white rounded-lg bg-gray-100 text-md focus:outline-none focus:border-black focus:ring-black "></li>
 					</ul>
-						
-						
-					<br><br>
+					<ul class="pb-5">
+						<li><label class="text-xl font-bold text-gray-950 font-Inter">Password : </label></li>
+						<li><input type="password" name="password" class="font-Inter p-2 border-2 border-white rounded-lg bg-gray-100 text-md focus:outline-none focus:border-black focus:ring-black "></li>
+					</ul>					
 				</div>
 				
 
 				<!--Footer-->
-				<div class="flex justify-end pt-2">
-					<button type="button" class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2" @click="alert('Additional Action');">Action</button>
-					<button class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400" name="updateItem" x-bind:value="selectedValue">Ubah</button>
+				<div class="flex justify-center pt-2 pb-5" >
+					<button class="modal-close px-4 bg-black p-3 rounded-lg text-white hover:bg-emerald-950" name="updateItem">Login</button>
 				</div>
 			</form>
 
@@ -305,8 +326,8 @@
     <!--Dialog Wrapper-->
     <div class="bg-hqhan w-11/12 md:max-w-[40rem] max-w-md mx-auto rounded shadow-lg py-4 text-left px-6 my-auto" x-show="showModalDetail" @click.away="showModalDetail = false" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
         <!--Title-->
-        <div class="flex justify-between items-center pb-3">
-            <p class="text-2xl font-bold">Detail Proyek</p>
+        <div class="flex justify-between items-center pb-5">
+            <p class="text-2xl font-bold" x-text="'Detail'"></p>
             <div class="cursor-pointer" @click="showModalDetail = false">
                 <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
                     <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
@@ -317,22 +338,16 @@
             const baseUrl = "<?php echo base_url(); ?>";
         </script>
         <!-- content -->
-        <div x-init="fetchData()" class="flex flex-col justify-center items-center">
+        <div class="flex flex-col justify-center items-center">
             <div class="flex">
-                <template x-for="todo in todos.filter(item => item.id.includes(selectedValue))" :key="todo.id">
-                    <img :src="baseUrl + 'upload/' + todo.gambar" :alt="todo.gambar" class="w-full max-w-md h-[28rem] object-cover shadow-[0_4px_10px_0.5px_rgba(0,0,0,0.5)]">
-                </template>
+                <img :src="baseUrl + 'upload/' + todoGambar" :alt="todoGambar" class="w-full max-w-md h-[28rem] object-cover shadow-[0_4px_10px_0.5px_rgba(0,0,0,0.5)]">
             </div>
             <div class="flex justify-center">
-                <template x-for="todo in todos.filter(item => item.id.includes(selectedValue))" :key="todo.id">
-                    <h3 class="pt-5 text-xl pb-5 md:text-4xl md:pb-5 font-Shadows-Into-Light font-extrabold" x-text="todo.title"></h3>
-                </template>
+				<h3 class="pt-5 text-xl pb-5 md:text-4xl md:pb-5 font-Shadows-Into-Light font-extrabold" x-text="todoTitle"></h3>
             </div>
             <div class="flex">
 				<div class="hijauTua rounded-lg">
-					<template x-for="todo in todos.filter(item => item.id.includes(selectedValue))" :key="todo.id">
-						<p class=" text-white m-5 text-justify text-sm md:text-xl" x-text="todo.description"></p>
-					</template>
+					<p class=" text-white m-5 text-justify text-sm md:text-xl" x-text="todoDescription"></p>
 				</div>
             </div>
         </div>
@@ -340,8 +355,7 @@
 </div>
 
 
-
-
+</div>
 
 <!-- Quotes dan tombol di section ini -->
 
@@ -352,7 +366,7 @@
 	<img src="asset/WWhite.svg" width="400" class="pointer-events-none ml-20">
 	<img src="asset/WaltQuotes.svg" class="pointer-events-none ml-32 mt-20" width="900">-->
 
-	<div style="scroll-margin-top: 50px" id="quotes" x-data="{ show1: true, show2: false}" class="flex justify-center bg-black 2xl:py-36 xl:py-24 md:py-[7rem]  py-20"
+	<div style="scroll-margin-top: 100px" id="quotes" x-data="{ show1: true, show2: false}" class="flex justify-center bg-ini 2xl:py-36 xl:py-24 md:py-[7rem]  py-20"
 		x-init="
 		setInterval(function(){
 			setTimeout(function() {
@@ -399,9 +413,9 @@
 
 <!-- kelompok card -->
 <div id="project" style="scroll-margin-top: 80px" class="latarSVG">
-	<div class="flex flex-wrap justify-center lg:pt-24 pt-12	 md:pt-20 xl:pb-32 pb-10 bg-[url('/metaball.svg')] " style="background-size:100% 100%; background-repeat: no-repeat;">
-		<div class="star flex  md:mb-16 xl:mb-24 h-14 lg:mb-20 mb-16">
-			<h1 class="font-Kaushan-Script font-extrabold 2xl:text-6xl xl:text-6xl md:text-6xl text-4xl bg-gradient-to-r from-[rgba(0,247,255,0.71)] to-[#007067] text-transparent bg-clip-text
+	<div class="flex flex-wrap justify-center lg:pt-24 pt-12	 md:pt-20 xl:pb-32 pb-10 " style="background-size:100% 100%; background-repeat: no-repeat;">
+		<div class="star flex  md:mb-24 xl:mb-32 h-14 lg:mb-20 mb-24">
+			<h1 class="font-Kaushan-Script font-extrabold 2xl:text-6xl xl:text-6xl md:text-6xl text-[2.7rem] text-4xl bg-gradient-to-r from-[rgba(0,247,255,0.71)] to-[#007067] text-transparent bg-clip-text
 			w-[19rem] h-[98px] md:w-[33.5rem] md:h-[80px] text-center">My Portofolio Project</h1>
 		</div>
 	  <div class="w-full"></div>

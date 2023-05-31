@@ -55,3 +55,4 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['api/portofolio'] = 'portofolio';
+$route['admin'] = 'admin';
