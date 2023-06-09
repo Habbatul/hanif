@@ -165,7 +165,7 @@ if(isset($error)){
 					typingDelay: 100,
 					deletingDelay: 50,
 				}">
-				<span x-html="text[index].substring(0, charIndex) + '<span x-show=\'charIndex%2==0\' class=\'xl:text-[4.8rem] md:text-[2.6rem] text-[1.7rem] font-bold\'>  |</span>'" x-init="
+				<span x-html="text[index].substring(0, charIndex) + '<span x-show=\'charIndex%2==0\' class=\'xl:text-[4.8rem] md:text-[2.6rem] text-[1.7rem] font-bold\'> |</span>'" x-init="
 					setInterval(() => {
 						if (isDeleting) {
 							charIndex--;
