@@ -67,10 +67,10 @@ if(isset($error)){
 <body x-data="{ 'showModal': false, 'showModalDel' : false, 'showModalDetail' : false, selectedValue: '',selectedValue2: '', todos: [],
 	async fetchData() {
 		try {
-			const response = await fetch('http://localhost/hanif/api/portofolio', { method: 'post' });
+			const response = await fetch('http://localhost/eli/api/portofolio', { method: 'post' });
 			const data = await response.json();
 			console.log(data);
-			this.todos = data.result;
+			this.todos = data.data;
 		} catch (error) {
 			console.error(error);
 		}
@@ -150,12 +150,12 @@ if(isset($error)){
 	<section id="hero" class="max-w-full relative md:pb-[11rem] lg:pb-0 pb-[4rem]" style="scroll-margin-top: 100px">
 
 	<div class="scrollAnimate2 bg-white md:mt-20 mt-[2rem] 2xl:max-w-xs mb-5 md:max-w-[12rem] md:max-h-[1rem] lg:max-h-20 xl:max-w-[16rem] max-w-[8rem] max-h-[0.8rem]">&nbsp;</div>
-		<div class="stackUsed md:ml-10 md:mt-2 lg:mt-8 2xl:max-w-xl 2xl5:text-[6rem] 2xl5:leading-[6.6rem] 2xl5:max-w-2xl
-		text-[2rem] leading-[2.4rem] ml-4 max-w-[15rem]
-		 2xl:text-[5rem] 2xl:leading-[5.5rem] xl:text-[4rem] xl:leading-[4.3rem] 
+		<div class="stackUsed md:ml-10 md:mt-2 lg:mt-8 2xl:max-w-xl 2xl5:text-[6rem] 2xl5:leading-[6.8rem] 2xl5:max-w-2xl
+		text-[2rem] leading-[2.4rem] ml-4 max-w-[15rem] 
+		 2xl:text-[5rem] 2xl:leading-[6rem] xl:text-[4rem] xl:leading-[4.7rem] 
 		 xl:max-w-lg font-Inter text-white inline-block 2xl:mb-20 xl:mb-0
 		 md:text-[3.3rem] md:leading-[3.6rem] md:max-w-[24rem]">
-			<span>I Have Many Skill Including Developing	
+			<span>I Have Many <br> Skill Including Developing	
 
 			<div x-data="{ 
 					text: ['Website', 'DesktopApp', 'Android', 'Game 3D/2D'],
@@ -165,7 +165,7 @@ if(isset($error)){
 					typingDelay: 100,
 					deletingDelay: 50,
 				}">
-				<span x-html="text[index].substring(0, charIndex) + '<span x-show=\'charIndex%2==0\' class=\'xl:text-[4.8rem] md:text-[2.6rem] text-[1.7rem] font-bold\'> |</span>'" x-init="
+				<span x-html="text[index].substring(0, charIndex) + '<span x-show=\'charIndex%2==0\' class=\'2xl:text-[4rem] xl:text-[3.2rem] 2xl5:text-[4.8rem] md:text-[2.6rem] text-[1.7rem] font-bold\'> |</span>'" x-init="
 					setInterval(() => {
 						if (isDeleting) {
 							charIndex--;
@@ -188,7 +188,7 @@ if(isset($error)){
 		
 
 		<!-- Button Login -->
-		<div @click="showModal=true" class="gambar-han scrollAnimate absolute right-0 flex group hover:cursor-pointer 2xl:mr-[39rem] 2xl:mt-[-15rem] 
+		<div @click="showModal=true" class="gambar-han scrollAnimate absolute right-0 flex group hover:cursor-pointer 2xl:mr-[42rem] 2xl:mt-[-16.5rem] 
 		md:mt-[6.7rem] md:mr-[34rem] xl:mr-[30rem] xl:mt-[-9rem] 2xl5:mt-[-21rem] 2xl5:mr-[46rem]
 		mt-[5.4rem] mr-[12.3rem]">
 			<img class="2xl5:h-[20rem] 2xl:h-[15rem] xl:h-[13rem] md:h-[11rem] h-[8rem]
@@ -340,8 +340,10 @@ if(isset($error)){
             <div class="flex">
                 <img :src="'upload/' + todoGambar" :alt="todoGambar" class="w-full max-w-lg h-[28rem] md:max-h-full max-h-[18.5rem] object-cover shadow-[0_4px_10px_0.5px_rgba(0,0,0,0.5)] rounded-md">
             </div>
-            <div class="flex justify-center">
-				<h3 class="pt-5 text-xl pb-5 md:text-4xl md:pb-5 font-Shadows-Into-Light font-extrabold" x-text="todoTitle"></h3>
+            <div class="flex justify-center pt-1">
+				<a :href = "todoLink">
+					<h3 class="pt-5 text-2xl pb-5 md:text-5xl md:pb-5 font-Shadows-Into-Light font-extrabold hover:text-red-600 cursor-pointer" x-text="todoTitle"></h3>
+				</a>
             </div>
             <div class="flex">
 				<div class="hijauTua rounded-lg">
@@ -490,7 +492,7 @@ untuk akhir seluruh section  -->
 	<div class="flex-wrap lg:mr-20 lg:mb-1 md:mb-5 mb-8 md:mr-10">
 		<h3 class="text-lg font-medium text-white">MyProject</h3>
 		<ul >
-			<li><a href="#" class="text-gray-300 hover:text-white">GitHub</a></li>
+			<li><a href="https://github.com/Habbatul" class="text-gray-300 hover:text-white">GitHub</a></li>
 		</ul>
 	</div>
 
@@ -508,8 +510,8 @@ untuk akhir seluruh section  -->
 		<div class="flex-wrap">
 		  <h3 class="text-lg font-medium text-white">Sosial Media</h3>
 		  <ul >
-			<li><a href="#" class="text-gray-300 hover:text-white">Instagram</a></li>
-			<li><a href="#" class="text-gray-300 hover:text-white">Facebook</a></li>
+			<li><a href="https://instagram.com/hq.han?igshid=ZGUzMzM3NWJiOQ==" class="text-gray-300 hover:text-white">Instagram</a></li>
+			<li><a href="https://instagram.com/hq.han?igshid=ZGUzMzM3NWJiOQ==" class="text-gray-300 hover:text-white">Facebook</a></li>
 		  </ul>
 		</div>
 

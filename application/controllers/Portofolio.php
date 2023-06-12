@@ -26,12 +26,27 @@ class Portofolio extends CI_Controller {
 
 	public function index()
 	{
+		$response['code'] = 200;
+		$response['status'] = 'success';
+		
 		// Mengambil data portofolio dari database
-		$data['result'] = $this->db->get('portolist')->result();
+		$portfolios = $this->db->get('portolist')->result();
+	
+		// Melakukan escaping pada teks yang akan ditampilkan dalam respons
+		foreach ($portfolios as $portfolio) {
+			$portfolio->id = htmlspecialchars($portfolio->id);
+			$portfolio->description = htmlspecialchars($portfolio->description);
+			$portfolio->title = htmlspecialchars($portfolio->title);
+			$portfolio->link = htmlspecialchars($portfolio->link);
+			$portfolio->gambar = htmlspecialchars($portfolio->gambar);
+			// Melarikan atribut lain jika diperlukan
+		}
+	
+		$response['data'] = $portfolios;
 	
 		// Mengirim respons dalam format JSON
 		$this->output
 			->set_content_type('application/json')
-			->set_output(json_encode($data));
+			->set_output(json_encode($response));
 	}
 }

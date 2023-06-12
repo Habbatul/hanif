@@ -74,6 +74,7 @@ class Admin extends CI_Controller {
         if ($gambar['error'] === UPLOAD_ERR_OK) {
             $fileName = $gambar['name'];
             $croppedData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $croppedImageData));
+            htmlspecialchars($croppedData);
             $croppedImagePath = 'upload/' . $fileName;
             file_put_contents($croppedImagePath, $croppedData);
             $gambar = $fileName;
@@ -104,6 +105,7 @@ class Admin extends CI_Controller {
         if ($gambar['error'] === UPLOAD_ERR_OK) {
             $fileName = $gambar['name'];
             $croppedData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $croppedImageData));
+            htmlspecialchars($croppedData);
             $croppedImagePath = 'upload/' . $fileName;
             file_put_contents($croppedImagePath, $croppedData);
             $gambar = $fileName;
