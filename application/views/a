@@ -1,0 +1,20 @@
+{
+    "code": "number",
+    "status": "string",
+    "data": [
+        {
+            "id": "integer, unique",
+            "gambar": "string",
+            "title": "string",
+            "description": "string", 
+            "link": "string"
+        },
+        {
+            "id": "integer, unique",
+            "gambar": "string",
+            "title": "string",
+            "description": "string", 
+            "link": "string"
+        }
+    ]
+}

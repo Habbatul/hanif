@@ -67,10 +67,10 @@
 	todos: [],
 	async fetchData() {
 		try {
-			const response = await fetch('http://localhost/hanif/api/portofolio', { method: 'post' });
+			const response = await fetch('http://localhost/eli/api/portofolio	', { method: 'post' });
 			const data = await response.json();
 			console.log(data);
-			this.todos = data.result;
+			this.todos = data.data;
 		} catch (error) {
 			console.error(error);
 		}
@@ -120,8 +120,8 @@
 				<td x-text="<?= $item->id ?>" class="p-3 lg:table-cell border-collapse text-white"></td>
 				<td class="p-3 lg:table-cell border-collapse text-white"><img src="<?php echo "upload/".$item->gambar ?>" class="rounded-xl w-[10rem] h-[10rem] object-cover mx-auto shadow-xl"> </td>
 				<td x-text="'<?= $item->title ?>'" class="p-3 lg:table-cell border-collapse text-white"></td>
-				<td x-text="'<?= $item->description ?>'" class="p-3 lg:table-cell border-collapse text-white"></td>
-				<td x-text="'<?= $item->link ?>'" class="p-3 lg:table-cell border-collapse text-white"></td>
+				<td x-text="'<?= substr($item->description, 0, 200) . (strlen($item->description) > 200 ? "..." : "") ?>'" class="p-3 lg:table-cell border-collapse text-white"></td>
+				<td x-text="'<?= substr($item->link, 0, 20) . (strlen($item->link ) > 20 ? "..." : "") ?>'" class="p-3 lg:table-cell border-collapse text-white"></td>
 				<td class="p-3 lg:table-cell text-center border-collapse">
 				<button type="submit" class="border m-2 text-slate-50 hover:text-teal-600 font-bold py-2 px-4 rounded-full" @click="showModalDel = true; selectedValue = <?= $item->id; ?>; selectedValue2 = '<?= $item->gambar; ?>'">Hapus</button>
 				<button type="button" class="border m-2 text-slate-50 hover:text-teal-600 font-bold py-2 px-4 rounded-full" @click="showModal = true; selectedValue = <?= $item->id; ?>">Ubah</button>
@@ -146,7 +146,7 @@
     <!--Dialog Wrapper-->
     <div class="md:w-11/12 w-[99%] md:max-w-[40rem] max-w-md mx-auto py-4 text-left px-6 my-auto" x-show="showModal" @click.away="showModal = false" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
 			<!--Dialog-->
-			<div class="bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg py-4 text-left px-3 md:px-6" x-show="showModal" @click.away="showModal = false" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
+			<div class="bg-hqhan w-11/12 md:max-w-md mx-auto rounded shadow-lg py-4 text-left px-3 md:px-6" x-show="showModal" @click.away="showModal = false" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
 
 				<!--Title-->
 				<div class="flex justify-between items-center pb-3">
@@ -170,20 +170,20 @@
 
 				<!--nama-->
 				<ul class="px-0">
-				<li><label class="text-lg font-bold text-blue-500">Title :</label></li>
+				<li><label class="text-lg font-bold text-black">Title :</label></li>
 				<li>
-					<input :value="itemTitle" type="text" id="titleInput" name="title" class="font-mono p-2 border-2 border-blue-500 rounded-lg bg-gray-100 text-base focus:outline-none focus:border-green-500 focus:ring-green-500">
+					<input :value="itemTitle" type="text" id="titleInput" name="title" class="font-mono p-2 border-2 border-stone-900 rounded-lg bg-gray-100 text-base focus:outline-none focus:border-green-500 focus:ring-green-500">
 					<span id="titleError" class=" text-red-600 font-semibold hidden">Field ini tidak boleh kosong</span>
 				</li>
 				</ul>
 
 				<!--gambar-->
 				<ul class="px-0">
-				<li><label class="text-lg font-bold text-blue-500">Thumbnail :</label></li>
+				<li><label class="text-lg font-bold text-black">Thumbnail :</label></li>
 
 				<input type="hidden" id="croppedImageData" name="croppedImageData">
 				<li>
-					<input type="file" id="imageInput" name="gambar" accept="image/*" onchange="loadImage(event)" class="text-lg font-bold text-blue-500">
+					<input type="file" id="imageInput" name="gambar" accept="image/*" onchange="loadImage(event)" class="text-lg font-bold text-black">
 				</li>
 				</ul>
 
@@ -199,18 +199,18 @@
 
 				<!--deskripsi-->
 				<ul class="px-0">
-				<li><label class="text-lg font-bold text-blue-500">Deskripsi :</label></li>
+				<li><label class="text-lg font-bold text-black">Deskripsi :</label></li>
 				<li>
-					<textarea :value="itemDeskripsi" id="descriptionInput" name="description" class="lg:w-[20rem] w-[10rem] font-mono p-2 border-2 border-blue-500 rounded-lg bg-gray-100 text-base focus:outline-none focus:border-green-500 focus:ring-green-500"></textarea>
+					<textarea :value="itemDeskripsi" id="descriptionInput" name="description" class="lg:w-[20rem] w-[10rem] font-mono p-2 border-2 border-stone-900 rounded-lg bg-gray-100 text-base focus:outline-none focus:border-green-500 focus:ring-green-500"></textarea>
 					<span id="descriptionError" class=" text-red-600 font-semibold hidden">Field ini tidak boleh kosong</span>
 				</li>
 				</ul>
 
 				<!--jenis-->
 				<ul class="px-0">
-				<li><label class="text-lg font-bold text-blue-500">url:</label></li>
+				<li><label class="text-lg font-bold text-black">url:</label></li>
 				<li>
-					<input :value="itemLink" type="text" id="linkInput" name="link" class="font-mono p-2 border-2 border-blue-500 rounded-lg bg-gray-100 text-base focus:outline-none focus:border-green-500 focus:ring-green-500">
+					<input :value="itemLink" type="text" id="linkInput" name="link" class="font-mono p-2 border-2 border-stone-900 rounded-lg bg-gray-100 text-base focus:outline-none focus:border-green-500 focus:ring-green-500">
 					<span id="linkError" class=" text-red-600 font-semibold hidden">Field ini tidak boleh kosong</span>
 				</li>
 				</ul>
@@ -221,8 +221,8 @@
 
 			<!--Footer-->
 			<div class="flex justify-end pt-2">
-				<button type="button" class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2" @click="alert(selectedValue)">Action</button>
-				<button class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400" value="ubahItem" name="ubahItem">Ubah</button>
+				<button type="button" class="px-4 bg-transparent p-3 rounded-lg text-stone-900 hover:bg-gray-100 hover:text-red-800 mr-2" @click="alert(selectedValue)">Action</button>
+				<button class="modal-close px-4 bg-stone-900 p-3 rounded-lg text-white hover:bg-red-800" value="ubahItem" name="ubahItem">Ubah</button>
 			</div>
 			</form>
 
@@ -241,7 +241,7 @@
     <!--Dialog Wrapper-->
     <div class="md:w-11/12 w-[99%] md:max-w-[40rem] max-w-md mx-auto py-4 text-left px-6 my-auto" x-show="showModalAdd " @click.away="showModalAdd = false" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
 			<!--Dialog-->
-			<div class="bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg py-4 text-left px-3 md:px-6" x-show="showModalAdd " @click.away="showModalAdd  = false" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
+			<div class="bg-hqhan w-11/12 md:max-w-md mx-auto rounded shadow-lg py-4 text-left px-3 md:px-6" x-show="showModalAdd " @click.away="showModalAdd  = false" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
 
 				<!--Title-->
 				<div class="flex justify-between items-center pb-3">
@@ -265,20 +265,20 @@
 
 				<!--nama-->
 				<ul class="px-0">
-				<li><label class="text-lg font-bold text-blue-500">Title :</label></li>
+				<li><label class="text-lg font-bold text-black">Title :</label></li>
 				<li>
-					<input  type="text" id="titleInput2" name="title" class="font-mono p-2 border-2 border-blue-500 rounded-lg bg-gray-100 text-base focus:outline-none focus:border-green-500 focus:ring-green-500">
+					<input  type="text" id="titleInput2" name="title" class="font-mono p-2 border-2 border-stone-900 rounded-lg bg-gray-100 text-base focus:outline-none focus:border-green-500 focus:ring-green-500">
 					<span id="titleError2" class=" text-red-600 font-semibold hidden">Field ini tidak boleh kosong</span>
 				</li>
 				</ul>
 
 				<!--gambar-->
 				<ul class="px-0">
-				<li><label class="text-lg font-bold text-blue-500">Thumbnail :</label></li>
+				<li><label class="text-lg font-bold text-black">Thumbnail :</label></li>
 
 				<input type="hidden" id="croppedImageDataz" name="croppedImageData">
 				<li>
-					<input type="file" id="imageInput" name="gambar" accept="image/*" onchange="loadImage2(event)" class="text-lg font-bold text-blue-500">
+					<input type="file" id="imageInput" name="gambar" accept="image/*" onchange="loadImage2(event)" class="text-lg font-bold text-black">
 				</li>
 				</ul>
 
@@ -294,18 +294,18 @@
 
 				<!--deskripsi-->
 				<ul class="px-0">
-				<li><label class="text-lg font-bold text-blue-500">Deskripsi :</label></li>
+				<li><label class="text-lg font-bold text-black">Deskripsi :</label></li>
 				<li>
-					<textarea id="descriptionInput2" name="description" class="lg:w-[20rem] w-[10rem] font-mono p-2 border-2 border-blue-500 rounded-lg bg-gray-100 text-base focus:outline-none focus:border-green-500 focus:ring-green-500"></textarea>
+					<textarea id="descriptionInput2" name="description" class="lg:w-[20rem] w-[10rem] font-mono p-2 border-2 border-stone-900 rounded-lg bg-gray-100 text-base focus:outline-none focus:border-green-500 focus:ring-green-500"></textarea>
 					<span id="descriptionError2" class=" text-red-600 font-semibold hidden">Field ini tidak boleh kosong</span>
 				</li>
 				</ul>
 
 				<!--jenis-->
 				<ul class="px-0">
-				<li><label class="text-lg font-bold text-blue-500">url:</label></li>
+				<li><label class="text-lg font-bold text-black">url:</label></li>
 				<li>
-					<input type="text" id="linkInput2" name="link" class="font-mono p-2 border-2 border-blue-500 rounded-lg bg-gray-100 text-base focus:outline-none focus:border-green-500 focus:ring-green-500">
+					<input type="text" id="linkInput2" name="link" class="font-mono p-2 border-2 border-stone-900 rounded-lg bg-gray-100 text-base focus:outline-none focus:border-green-500 focus:ring-green-500">
 					<span id="linkError2" class=" text-red-600 font-semibold hidden">Field ini tidak boleh kosong</span>
 				</li>
 				</ul>
@@ -315,8 +315,8 @@
 
 			<!--Footer-->
 			<div class="flex justify-end pt-2">
-				<button type="button" class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2" @click="alert(selectedValue)">Action</button>
-				<button class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400" value="tambahItem" name="tambahItem">Ubah</button>
+				<button type="button" class="px-4 bg-transparent p-3 rounded-lg text-stone-900 hover:bg-gray-100 hover:text-red-800 mr-2" @click="alert(selectedValue)">Action</button>
+				<button class="modal-close px-4 bg-stone-900 p-3 rounded-lg text-white hover:bg-red-800" value="tambahItem" name="tambahItem">Ubah</button>
 			</div>
 			</form>
 
@@ -412,7 +412,7 @@
 		<!--Overlay-->
 		<div class="overflow-auto" style="background-color: rgba(0,0,0,0.5);backdrop-filter: blur(5px);" x-show="showModalDel" :class="{ 'fixed inset-0 z-10 flex items-center justify-center': showModalDel }">
 			<!--Dialog-->
-			<div class="bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg py-4 text-left px-6" x-show="showModalDel" @click.away="showModalDel = false" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
+			<div class="bg-hqhan w-11/12 md:max-w-md mx-auto rounded shadow-lg py-4 text-left px-6" x-show="showModalDel" @click.away="showModalDel = false" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
 
 			<script>
 					const formUrl3 = "<?php echo base_url('admin/delete_item/'); ?>";
@@ -429,17 +429,17 @@
 				</div>
 
 				<!-- content -->
-				<ul class="my-5 bg-blue-200 border-2 border-teal-500 rounded-lg p-5">
+				<ul class="my-5 bg-white border-2 border-teal-500 rounded-lg p-5">
 					<li><p class="font-mono">Apakah anda ingin menghapus data data dengan id = <span x-text="selectedValue"></span>, dengan gambar = <span x-text="selectedValue2"></span></p></li>
 				</ul>
 				
 
 				<!--Footer-->
 				<div class="flex justify-end pt-2">
-                     <button class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2" @click="alert('id : ' + selectedValue);">Cek id item</button>
+                     <button class="px-4 bg-transparent p-3 rounded-lg text-stone-900 hover:bg-gray-100 hover:text-red-700 mr-2" @click="alert('id : ' + selectedValue);">Cek id item</button>
                      <form :action="formUrl3" method="post">
 						<input type="hidden" name="gambar" x-bind:value="selectedValue2" >
-						<button class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400" name="deleteItem" x-bind:value="selectedValue">Hapus</button>
+						<button class="modal-close px-4 bg-stone-900 p-3 rounded-lg text-white hover:bg-red-700" name="deleteItem" x-bind:value="selectedValue">Hapus</button>
 					</form>
 					
 					
