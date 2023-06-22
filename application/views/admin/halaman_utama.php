@@ -87,10 +87,13 @@
 
 	<!-- Navbar -->
 	<nav class="bg-opacity-40 py-3 bg-gray-800 backdrop-filter backdrop-blur-sm fixed w-full z-50 shadow-[0_4px_10px_0.5px_rgba(0,0,0,0.5)] ease-in duration-500">
-		<div class="md:my-2">
-	<a href="admin/logout" class="ml-6 md:ml-[2rem] xl:ml-[2rem] font-Inter font-bold text-md md:text-xl text-white
-		 hover:text-green-100 hover:cursor-pointer no-underline">LOGOUT</a>
-		 </div>
+		<div class="md:my-2 flex justify-between items-center">
+			<a href="admin/logout" class="ml-6 md:ml-[2rem] xl:ml-[2rem] font-Inter font-bold text-md md:text-xl text-white hover:text-green-100 hover:cursor-pointer no-underline">LOGOUT</a>
+			<div>
+				<a href="admin" class="mr-4 lg:mr-6 md:mr-[2rem] xl:mr-[2rem] font-Inter font-bold text-md md:text-xl text-white hover:text-green-100 hover:cursor-pointer no-underline">Content</a>
+				<a href="register" class="mr-4 lg:mr-9 font-Inter font-bold text-md md:text-xl text-white hover:text-green-100 hover:cursor-pointer no-underline">Register</a>
+			</div>
+		</div>
 	</nav>
 
    <!-- your content goes here -->

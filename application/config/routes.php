@@ -56,3 +56,13 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['api/portofolio'] = 'portofolio';
 $route['admin'] = 'admin';
+$route['register'] = 'admin/register';
+
+$route['admin/register'] = function() {
+    show_404(); // Menampilkan halaman 404 jika mencoba mengakses /admin secara langsung
+};
+
+
+$route['portofolio'] = function() {
+    show_404(); // Menampilkan halaman 404 jika mencoba mengakses /admin secara langsung
+};

@@ -18,5 +18,31 @@ class User_model extends CI_Model {
 
         return null; // Login gagal
     }
+
+    public function GetUsername(){
+        // Mengambil semua item dari tabel
+        $query = $this->db->select('username, id')->get('admin');
+        return $query->result();
+    }
+
+    public function save_admin($username, $password)
+    {
+        // Menyimpan item ke dalam tabel
+        $data = array(
+            'username' => $username,
+            'password' => $password,
+        );
+        $this->db->insert('admin', $data);
+    }
+
+    public function delete_admin($id)
+    {
+        // Menghapus item berdasarkan ID
+        $this->db->where('id', $id);
+        $this->db->delete('admin');
+    }
+
+
 }
+
 ?>

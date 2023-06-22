@@ -26,6 +26,8 @@ class Admin extends CI_Controller {
     $this->load->model('user_model');
     $this->load->library('upload');
     $this->load->library('session');
+    $this->load->library('form_validation');
+    $this->load->helper('form');
 	}
 
 	public function index()
@@ -121,6 +123,42 @@ class Admin extends CI_Controller {
         redirect('admin'); // Redirect ke halaman utama setelah berhasil melakukan update
     }
 
+    public function register(){
+        if (!$this->session->userdata('admin')) {
+            redirect('/');
+        }else{
+            //kalo ada register
+            if(isset($_POST['register'])){
+                $this->form_validation->set_rules('username', 'username', 'required');
+                $this->form_validation->set_rules('password', 'password', 'required|regex_match[/[0-9]/]');
 
+    
+                $this->form_validation->set_message('required', 'pastikan %s sudah diisi');
+                $this->form_validation->set_message('regex_match', '%s harus mengandung angka numerik');
+    
+                if ($this->form_validation->run() == false) {
+                    // Validasi gagal, redirect kembali ke halaman register
+                    $data['data'] = $this->user_model->GetUsername();
+                    $this->load->view('admin/halaman_register', $data);
+                    
+                } else {
+                    $username = $this->input->post('username');
+                    $password = $this->input->post('password');
+                    $this->user_model->save_admin($username, $password);
+                    redirect('register');
+                }
+            }else{
+                $data['data'] = $this->user_model->GetUsername();
+                $this->load->view('admin/halaman_register', $data);
+            }
+
+        }
+    }
+    
+    public function delete_admin(){
+        $id= $this->input->post('id');
+        $this->user_model->delete_admin($id);
+        redirect('register');
+    }
 
 }
