@@ -16,6 +16,7 @@ if(isset($error)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Han's 3D Website</title>
 
+	<script type="module" crossorigin src="asset/asset/index.8cda176b.js"></script>
     <script type="module" crossorigin src="asset/assets/index.725a3ebe.js"></script>
     <script src="asset/assets/cdn.js" defer></script>
 	<link href="asset/asset/output.css" rel="stylesheet">
@@ -30,6 +31,20 @@ if(isset($error)){
 	
 
 	<style>
+		#canvas2 {
+		position: absolute;
+		z-index: -1;
+		overflow: hidden;
+		margin: 0;
+		background-color: #000000;
+		}
+
+
+		#form-container {
+		position: relative;
+
+
+		}
         [x-cloak] {
 			display: none;
 		}
@@ -412,7 +427,7 @@ if(isset($error)){
 
 
 <!-- kelompok card -->
-<div id="project" style="scroll-margin-top: 80px" class="latarSVG">
+<div id="project" style="scroll-margin-top: 80px" class="latarSVG shadow-[0px_-30px_30px_-10px_rgba(0,0,0,0.8)_inset] shadow-black">
 	<div class="flex flex-wrap justify-center lg:pt-24 pt-12	 md:pt-20 xl:pb-32 pb-10 " style="background-size:100% 100%; background-repeat: no-repeat;">
 		<div class="star flex  md:mb-24 xl:mb-32 h-14 lg:mb-20 mb-24">
 			<h1 class="font-Kaushan-Script font-extrabold 2xl:text-6xl xl:text-6xl md:text-6xl text-[2.7rem] text-4xl bg-gradient-to-r from-[rgba(0,247,255,0.71)] to-[#007067] text-transparent bg-clip-text
@@ -478,7 +493,43 @@ untuk akhir seluruh section  -->
 
 </div>
 
-<footer class="bg-gray-800 lg:pb-24 lg:pt-24 md:pb-20 md:pt-14 pb-20 pt-10">
+<form id="form-container" class="flex md:justify-center justify-end md:items-start items-center flex-col">
+	<canvas id="canvas2"></canvas>
+	<div class="2xl:min-h-[30rem] 2xl:max-h-[30rem] 2xl:min-w-[28rem] 2xl:max-w-[28rem]
+				xl:min-h-[27rem] xl:max-h-[27rem] xl:min-w-[25rem] xl:max-w-[25rem]
+				lg:min-h-[21rem] lg:max-h-[21rem] lg:min-w-[23rem] lg:max-w-[23rem]
+				md:min-h-[21rem] md:max-h-[21rem] md:min-w-[19rem] md:max-w-[19rem]
+				min-h-[23rem] max-h-[23rem] min-w-[18rem] max-w-[18rem]
+		 bg-blue-500 p-4 sm:p-8 rounded-xl md:ml-14 lg:ml-36 xl:ml-44 2xl:ml-72 md:mb-0 sm:mb-20 mb-14" style="background-color: rgba(3, 101, 130, 0.5);backdrop-filter: blur(4px);">
+	  <h1 class="text-white text-center font-Shadows-Into-Light text-xl md:text-xl lg:text-2xl xl:text-4xl font-bold">Send Me a Message</h1>
+	  <div class="mt-6">
+
+		<ul class="text-center">
+		<li><input id="inputNama" type="text" class="w-full rounded-2xl p-2 md:p-1 lg:p-1 xl:p-3 text-center font-IBM-Plex-Sans text-white 
+			2xl:text-3xl xl:text-xl mt-2 xl:mt-4 lg:mt-2 lg:text-xl text-xl
+			focus:shadow-[0_0_30px_-3px_rgba(0,0,0,0.3)] focus:shadow-teal-400 focus:border-teal-400 focus:border-2 focus:outline-none"  
+			style="background-color: rgba(0, 0, 0, 0.5);backdrop-filter: blur(2px);" placeholder="Nama" /></li>
+
+		<li><input id="inputEmail" type="text" class="w-full rounded-2xl p-2 md:p-1 lg:p-1 xl:p-3 text-center text-white 
+			2xl:text-3xl xl:text-xl mt-2 xl:mt-4 lg:mt-2 lg:text-xl text-xl
+			focus:shadow-[0_0_30px_-3px_rgba(0,0,0,0.3)] focus:shadow-teal-400 focus:border-teal-400 focus:border-2 focus:outline-none" 
+			style="background-color: rgba(0, 0, 0, 0.5);backdrop-filter: blur(2px);" placeholder="Email" /></li>
+
+		<li><textarea id="inputPesan" class="resize-none w-full rounded-2xl p-2 md:p-1 lg:p-1 xl:p-3 text-center text-white 
+			2xl:text-3xl xl:text-xl mt-2 xl:mt-4 lg:mt-2 lg:text-xl text-xl
+			focus:shadow-[0_0_30px_-3px_rgba(0,0,0,0.3)] focus:shadow-teal-400 focus:border-teal-400 focus:border-2 focus:outline-none" 
+			style="background-color: rgba(0, 0, 0, 0.5);backdrop-filter: blur(2px);" placeholder="Pesan"></textarea></li>
+		</ul>
+
+		<div class="text-center mt-2 xl:mt-4 lg:mt-2">
+		<button class="modal-close px-8 bg-black p-3 pb-4 rounded-lg text-white hover:bg-white hover:text-black 2xl:text-3xl xl:text-xl lg:text-lg text-lg
+		hover:shadow-[0_0_30px_-3px_rgba(0,0,0,0.3)] hover:shadow-teal-400 hover:border-teal-400 hover:border-2 hover:outline-none"" name="updateItem">Send</button>
+		</div>
+	  </div>
+	</div>
+  </form>
+
+<footer class="bg-black lg:pb-24 lg:pt-24 md:pb-20 md:pt-14 pb-20 pt-10">
 	  <div class="lg:flex justify-center mx-5 lg:ml-1 ml-16 md:ml-20">
 
 
