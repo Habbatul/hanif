@@ -25,21 +25,18 @@ class User_model extends CI_Model {
         return $query->result();
     }
 
-    public function save_admin($username, $password)
+    //perubahan disini
+    public function update_admin($id, $username, $password=null)
     {
-        // Menyimpan item ke dalam tabel
-        $data = array(
-            'username' => $username,
-            'password' => $password,
-        );
-        $this->db->insert('admin', $data);
-    }
+        // Mengupdate item berdasarkan ID
+        $data['username'] = $username;
 
-    public function delete_admin($id)
-    {
-        // Menghapus item berdasarkan ID
+        if ($password!=null) {
+            $data['password'] = $password;
+        }
+    
         $this->db->where('id', $id);
-        $this->db->delete('admin');
+        $this->db->update('admin', $data);
     }
 
 

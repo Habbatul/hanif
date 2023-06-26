@@ -87,17 +87,18 @@
    <div class="flex flex-wrap justify-center pt-8 mb-10 md:pt-16  ">
 		<div class="star flex">
 			<h1 class="md:pt-10 pt-12 px-5 font-Kaushan-Script w-full font-extrabold 2xl:text-6xl xl:text-6xl md:text-6xl text-[2.7rem] text-4xl 
-			 text-slate-50 text-center">Account Management</h1>
+			 text-slate-50 text-center">Other</h1>
 		</div>
    </div>
 		
-
+<!-- perubahan disini -->
 
    <div class="p-16 my-16 md:w-96 w-80 block mx-auto rounded-xl" style="background-color: rgba(0,0,0,0.2);backdrop-filter: blur(5px);">
    <?php echo form_open('register'); ?>
-		<h3 class="mb-6 text-white text-center">Tambah Akun</h3>
+		<h3 class="mb-6 text-white text-center">Ubah Akun</h3>
+		<input type="hidden" name="id" value="<?=$data[0]->id?>">
 		<div class="mb-4">
-			<input type="text" name="username" class="w-full p-2 border border-white rounded" placeholder="Masukkan username">
+			<input type="text" value="<?=$data[0]->username?>" name="username" class="w-full p-2 border border-white rounded" placeholder="Masukkan username">
 		</div>
 		<div class="mb-4">
 			<input type="password" name="password" class="w-full p-2 border border-white rounded" placeholder="Masukkan password">
@@ -173,9 +174,9 @@
   </thead>
 
   <tbody class="transparent-body">
-    <?php foreach ($data as $item) : ?>
+    <?php foreach ($message as $item) : ?>
     <tr class="border-collapse">
-      <td x-text="'<?=$item->username?>'" class="p-3 lg:table-cell border-collapse text-white whitespace-normal w-2/5"></td>
+      <td x-text="'<?=$item->pesan?>'" class="p-3 lg:table-cell border-collapse text-white whitespace-normal w-2/5"></td>
       <td class="w-3/5 text-center">
         <button type="submit" class="border m-4 text-slate-50 hover:text-teal-600 font-bold py-2 px-4 rounded-full" @click="showModalDel = true; selectedValue = <?= $item->id; ?>;">Hapus</button>
       </td>
@@ -195,7 +196,7 @@
 			<div class="bg-hqhan w-11/12 md:max-w-md mx-auto rounded shadow-lg py-4 text-left px-6" x-show="showModalDel" @click.away="showModalDel = false" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100">
 
 			<script>
-					const formUrl3 = "<?php echo base_url('admin/delete_admin/'); ?>";
+					const formUrl3 = "<?php echo base_url('admin/deleteMessage/'); ?>";
 			</script>
 				<!--Title-->
 				<div class="flex justify-between items-center pb-3">

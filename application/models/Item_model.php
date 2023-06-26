@@ -44,6 +44,7 @@ class Item_model extends CI_Model {
     
         $this->db->where('id', $id);
         $this->db->update('portolist', $data);
+        var_dump($password);
     }
 
     public function delete_item($id)

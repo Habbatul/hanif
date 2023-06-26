@@ -24,6 +24,7 @@ class Admin extends CI_Controller {
     $this->load->database();
     $this->load->model('Item_model');
     $this->load->model('user_model');
+    $this->load->model('Message_model');
     $this->load->library('upload');
     $this->load->library('session');
     $this->load->library('form_validation');
@@ -123,6 +124,7 @@ class Admin extends CI_Controller {
         redirect('admin'); // Redirect ke halaman utama setelah berhasil melakukan update
     }
 
+    //register = ubah data ya
     public function register(){
         if (!$this->session->userdata('admin')) {
             redirect('/');
@@ -130,7 +132,7 @@ class Admin extends CI_Controller {
             //kalo ada register
             if(isset($_POST['register'])){
                 $this->form_validation->set_rules('username', 'username', 'required');
-                $this->form_validation->set_rules('password', 'password', 'required|regex_match[/[0-9]/]');
+                $this->form_validation->set_rules('password', 'password', 'regex_match[/[0-9]/]');
 
     
                 $this->form_validation->set_message('required', 'pastikan %s sudah diisi');
@@ -142,22 +144,32 @@ class Admin extends CI_Controller {
                     $this->load->view('admin/halaman_register', $data);
                     
                 } else {
+                    $id = $this->input->post('id');
                     $username = $this->input->post('username');
-                    $password = $this->input->post('password');
-                    $this->user_model->save_admin($username, $password);
+                    $passwordBefore = $this->input->post('password');
+
+                    //kalo password tidak kosong enkripsi kalo kosong isi null
+                    if($this->input->post('password') != null)
+                        $password = password_hash($passwordBefore, PASSWORD_BCRYPT);
+                    else
+                        $password = null;
+
+
+                    $this->user_model->update_admin($id, $username, $password);
                     redirect('register');
                 }
             }else{
                 $data['data'] = $this->user_model->GetUsername();
+                $data['message'] = $this->Message_model->GetMessage();
                 $this->load->view('admin/halaman_register', $data);
             }
 
         }
     }
     
-    public function delete_admin(){
+    public function deleteMessage(){
         $id= $this->input->post('id');
-        $this->user_model->delete_admin($id);
+        $this->Message_model->deleteMessage($id);
         redirect('register');
     }
 
