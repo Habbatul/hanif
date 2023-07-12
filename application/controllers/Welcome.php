@@ -28,5 +28,32 @@ class Welcome extends CI_Controller {
 		$data['error'] = $this->input->get('error');
 		$this->load->view('user/halaman_utama', $data);
 	}
+  
+  	public function submitForm() {
+		if( ($this->input->post('kirim') !== null)){
+			$this->load->database();
+
+			$this->load->model('Message_model');
+
+			$name = $this->input->post('nama');
+			$email = $this->input->post('email');
+			$message = $this->input->post('message');
+			$ipAddress = $this->input->ip_address();
+
+			// Validasi input jika diperlukan
+
+			// Cek apakah permintaan diperbolehkan berdasarkan alamat IP
+			if ($this->Message_model->cekPesan($ipAddress)) {
+				// Simpan data permintaan ke database
+				$this->Message_model->saveMessage($name, $email, $message, $ipAddress);
+				redirect('/?error= Pesan Kamu berhasil');
+			} else {
+				redirect('/?error= Kamu hanya dapat mengirim pesan sekali dalam sehari');
+			}
+			
+		}else{
+			redirect('/?error= CSRF token kamu tidak valid');
+		}
+    }
 
 }

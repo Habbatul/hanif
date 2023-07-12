@@ -77,7 +77,7 @@
 			<a href="admin/logout" class="ml-6 md:ml-[2rem] xl:ml-[2rem] font-Inter font-bold text-md md:text-xl text-white hover:text-green-100 hover:cursor-pointer no-underline">LOGOUT</a>
 			<div>
 				<a href="admin" class="mr-4 lg:mr-6 md:mr-[2rem] xl:mr-[2rem] font-Inter font-bold text-md md:text-xl text-white hover:text-green-100 hover:cursor-pointer no-underline">Content</a>
-				<a href="register" class="mr-4 lg:mr-9 font-Inter font-bold text-md md:text-xl text-white hover:text-green-100 hover:cursor-pointer no-underline">Register</a>
+				<a href="register" class="mr-4 lg:mr-9 font-Inter font-bold text-md md:text-xl text-white hover:text-green-100 hover:cursor-pointer no-underline">Other</a>
 			</div>
 		</div>
 	</nav>
@@ -162,21 +162,25 @@
 <div class="flex flex-wrap justify-center  ">
 		<div class="star flex">
 			<h1 class="md:pt-10 pt-12 px-5 font-Kaushan-Script w-full font-extrabold 2xl:text-6xl xl:text-6xl md:text-6xl text-[2.7rem] text-4xl 
-			 text-slate-50 text-center">List Akun</h1>
+			 text-slate-50 text-center">List Pesan Pengunjung</h1>
 		</div>
    </div>
 
 	<div class="overflow-x-auto px-2">
-	<table class="lg:text-xl text-sm border-separate border-spacing-1 w-1/5 m-auto mt-4 mb-4 rounded-[1rem] transparent-border p-3">
+	<table class="lg:text-xl text-sm border-separate border-spacing-1 w-3/5 m-auto mt-4 mb-4 rounded-[1rem] transparent-border p-3">
   <thead class="transparent-thead">
-    <th class="border-collapse p-3 font-bold uppercase text-white lg:table-cell font-IBM-Plex-Sans text-center">Username</th>
-    <th class="border-collapse p-3 font-bold uppercase text-white lg:table-cell font-IBM-Plex-Sans text-center">Pilihan</th>
+    <th class="border-collapse p-3 font-bold uppercase text-white font-IBM-Plex-Sans text-center">Nama</th>
+	<th class="border-collapse p-3 font-bold uppercase text-white font-IBM-Plex-Sans text-center">Email</th>
+	<th class="border-collapse p-3 font-bold uppercase text-white font-IBM-Plex-Sans text-center">Pesan</th>
+    <th class="border-collapse p-3 font-bold uppercase text-white font-IBM-Plex-Sans text-center">Pilihan</th>
   </thead>
 
   <tbody class="transparent-body">
     <?php foreach ($message as $item) : ?>
     <tr class="border-collapse">
-      <td x-text="'<?=$item->pesan?>'" class="p-3 lg:table-cell border-collapse text-white whitespace-normal w-2/5"></td>
+		<td x-text="'<?=$item->nama?>'" class="p-3 border-collapse text-white whitespace-normal w-1/5"></td>
+		<td x-text="'<?=$item->email?>'" class="p-3 border-collapse text-white whitespace-normal w-1/5"></td>
+		<td x-text="'<?=$item->pesan?>'" class="p-3 border-collapse text-white whitespace-normal w-4/5"></td>
       <td class="w-3/5 text-center">
         <button type="submit" class="border m-4 text-slate-50 hover:text-teal-600 font-bold py-2 px-4 rounded-full" @click="showModalDel = true; selectedValue = <?= $item->id; ?>;">Hapus</button>
       </td>

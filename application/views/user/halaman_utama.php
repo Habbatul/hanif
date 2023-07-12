@@ -16,7 +16,7 @@ if(isset($error)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Han's 3D Website</title>
 
-	<script type="module" crossorigin src="asset/asset/index.8cda176b.js"></script>
+  	<script type="module" crossorigin src="asset/asset/index.8cda176b.js"></script>
     <script type="module" crossorigin src="asset/assets/index.725a3ebe.js"></script>
     <script src="asset/assets/cdn.js" defer></script>
 	<link href="asset/asset/output.css" rel="stylesheet">
@@ -31,20 +31,20 @@ if(isset($error)){
 	
 
 	<style>
-		#canvas2 {
-		position: absolute;
-		z-index: -1;
-		overflow: hidden;
-		margin: 0;
-		background-color: #000000;
-		}
+        #canvas2 {
+          position: absolute;
+          z-index: -1;
+          overflow: hidden;
+          margin: 0;
+          background-color: #000000;
+        }
 
 
-		#form-container {
-		position: relative;
+        #form-container {
+          position: relative;
 
 
-		}
+        }
         [x-cloak] {
 			display: none;
 		}
@@ -82,7 +82,7 @@ if(isset($error)){
 <body x-data="{ 'showModal': false, 'showModalDel' : false, 'showModalDetail' : false, selectedValue: '',selectedValue2: '', todos: [],
 	async fetchData() {
 		try {
-			const response = await fetch('http://localhost/eli/api/portofolio', { method: 'post' });
+			const response = await fetch('http://localhost/hanif/api/portofolio', { method: 'post' });
 			const data = await response.json();
 			console.log(data);
 			this.todos = data.data;
@@ -383,39 +383,48 @@ if(isset($error)){
 
 	<div style="scroll-margin-top: 100px" id="quotes" x-data="{ show1: true, show2: false}" class="flex justify-center bg-ini 2xl:py-36 xl:py-24 md:py-[7rem]  py-20"
 		x-init="
-		setInterval(function(){
-			setTimeout(function() {
-				if (show1) {		  
-					show1 = false;
-					setTimeout(function() {
-					show2 = true;
-					}, 600);  
-				} else if(show2) {
-					show2 = false;
-					setTimeout(function() {
-					show1 = true;
-					}, 600);
-				}
-		}, 3000);},3600);
+
+          setInterval(function() {
+              if (show1) {
+                setTimeout(function() {
+                  show1 = false;
+                  setTimeout(function() {
+                    show2 = true;
+                  }, 1000);
+                }, 3000); // Penundaan sebelum menjalankan logika di dalam blok setTimeout terluar
+              } else if (show2) {
+                setTimeout(function() {
+                  show2 = false;
+                  setTimeout(function() {
+                    show1 = true;
+                  }, 1000);
+                }, 3000); // Penundaan sebelum menjalankan logika di dalam blok setTimeout terluar
+              }
+          }, 0);
 		  
 		">
+ 
 		<div class="flex flex-wrap justify-center">
-			<img  x-show="show1" src="asset/NTesla.svg" class="pointer-events-none 2xl:h-[27rem] lg:h-80 h-48 md:h-[20rem]" 
-				x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
-				x-transition:leave="ease-out duration-500" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
-				
-			<img x-show="show1" src="asset/TeslaQuotes.svg" class="pointer-events-none 2xl:ml-[6rem] 2xl:mt-48 2xl:h-[7.3rem] xl:h-[6rem] h-[1.8rem] mt-5 lg:mt-32 ml-5 lg:ml-10 md:h-[4rem] md:mt-[3rem] w-full lg:w-6/12"
-				x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
-				x-transition:leave="ease-out duration-500" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+                  <div class="absolute">
+                  <div class="flex flex-wrap justify-center">
+                    <img  x-show="show1" src="asset/NTesla.svg" class="pointer-events-none 2xl:h-[27rem] lg:h-80 h-48 md:h-[20rem]" 
+                        x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                        x-transition:leave="ease-out duration-500" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+
+                    <img x-show="show1" src="asset/TeslaQuotes.svg" class="pointer-events-none 2xl:ml-[6rem] 2xl:mt-48 2xl:h-[7.3rem] xl:h-[6rem] h-[1.8rem] mt-5 lg:mt-32 ml-5 lg:ml-10 md:h-[4rem] md:mt-[3rem] w-full lg:w-6/12"
+                        x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                        x-transition:leave="ease-out duration-500" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
 
 
-			<img x-show="show2" src="asset/WWhite.svg" class="pointer-events-none 2xl:h-[27rem] lg:h-80 h-48 md:h-[20rem]"
-				x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
-				x-transition:leave="ease-out duration-500" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
-				
-			<img x-show="show2" src="asset/WaltQuotes.svg" class="pointer-events-none 2xl:ml-[6rem] 2xl:mt-48 2xl:h-[6rem] xl:h-[4rem] h-[1.8rem] mt-5 lg:mt-32 ml-5 lg:ml-10 md:h-[4rem] md:mt-[3rem] w-full lg:w-6/12"
-				x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
-				x-transition:leave="ease-out duration-500" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"> 
+                    <img x-show="show2" src="asset/WWhite.svg" class=" pointer-events-none 2xl:h-[27rem] lg:h-80 h-48 md:h-[20rem]"
+                        x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                        x-transition:leave="ease-out duration-500" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+
+                    <img x-show="show2" src="asset/WaltQuotes.svg" class="pointer-events-none 2xl:ml-[6rem] 2xl:mt-48 2xl:h-[6rem] xl:h-[4rem] h-[1.8rem] mt-5 lg:mt-32 ml-5 lg:ml-10 md:h-[4rem] md:mt-[3rem] w-full lg:w-6/12"
+                        x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                        x-transition:leave="ease-out duration-500" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"> 
+                    </div>
+                  </div>
 		</div>
 				<div class="flex -z-40 relative 2xl:h-[27rem] lg:h-80 md:h-[27rem] md:mt mx-w-[0px] h-[13.8rem] mt-5 ">&nbsp;</div>
 	  </div>  
@@ -492,8 +501,8 @@ if(isset($error)){
 untuk akhir seluruh section  -->
 
 </div>
-
-<form id="form-container" class="flex md:justify-center justify-end md:items-start items-center flex-col">
+  <!-- form animasi  -->
+<form id="form-container" action="Welcome/submitForm" method="post" class="flex md:justify-center justify-end md:items-start items-center flex-col">
 	<canvas id="canvas2"></canvas>
 	<div class="2xl:min-h-[30rem] 2xl:max-h-[30rem] 2xl:min-w-[28rem] 2xl:max-w-[28rem]
 				xl:min-h-[27rem] xl:max-h-[27rem] xl:min-w-[25rem] xl:max-w-[25rem]
@@ -505,17 +514,17 @@ untuk akhir seluruh section  -->
 	  <div class="mt-6">
 
 		<ul class="text-center">
-		<li><input id="inputNama" type="text" class="w-full rounded-2xl p-2 md:p-1 lg:p-1 xl:p-3 text-center font-IBM-Plex-Sans text-white 
+		<li><input id="inputNama" name="nama" type="text" class="w-full rounded-2xl p-2 md:p-1 lg:p-1 xl:p-3 text-center font-IBM-Plex-Sans text-white 
 			2xl:text-3xl xl:text-xl mt-2 xl:mt-4 lg:mt-2 lg:text-xl text-xl
 			focus:shadow-[0_0_30px_-3px_rgba(0,0,0,0.3)] focus:shadow-teal-400 focus:border-teal-400 focus:border-2 focus:outline-none"  
 			style="background-color: rgba(0, 0, 0, 0.5);backdrop-filter: blur(2px);" placeholder="Nama" /></li>
 
-		<li><input id="inputEmail" type="text" class="w-full rounded-2xl p-2 md:p-1 lg:p-1 xl:p-3 text-center text-white 
+		<li><input id="inputEmail" name="email" type="text" class="w-full rounded-2xl p-2 md:p-1 lg:p-1 xl:p-3 text-center text-white 
 			2xl:text-3xl xl:text-xl mt-2 xl:mt-4 lg:mt-2 lg:text-xl text-xl
 			focus:shadow-[0_0_30px_-3px_rgba(0,0,0,0.3)] focus:shadow-teal-400 focus:border-teal-400 focus:border-2 focus:outline-none" 
 			style="background-color: rgba(0, 0, 0, 0.5);backdrop-filter: blur(2px);" placeholder="Email" /></li>
 
-		<li><textarea id="inputPesan" class="resize-none w-full rounded-2xl p-2 md:p-1 lg:p-1 xl:p-3 text-center text-white 
+		<li><textarea id="inputPesan" name="message" class="resize-none w-full rounded-2xl p-2 md:p-1 lg:p-1 xl:p-3 text-center text-white 
 			2xl:text-3xl xl:text-xl mt-2 xl:mt-4 lg:mt-2 lg:text-xl text-xl
 			focus:shadow-[0_0_30px_-3px_rgba(0,0,0,0.3)] focus:shadow-teal-400 focus:border-teal-400 focus:border-2 focus:outline-none" 
 			style="background-color: rgba(0, 0, 0, 0.5);backdrop-filter: blur(2px);" placeholder="Pesan"></textarea></li>
@@ -523,11 +532,13 @@ untuk akhir seluruh section  -->
 
 		<div class="text-center mt-2 xl:mt-4 lg:mt-2">
 		<button class="modal-close px-8 bg-black p-3 pb-4 rounded-lg text-white hover:bg-white hover:text-black 2xl:text-3xl xl:text-xl lg:text-lg text-lg
-		hover:shadow-[0_0_30px_-3px_rgba(0,0,0,0.3)] hover:shadow-teal-400 hover:border-teal-400 hover:border-2 hover:outline-none"" name="updateItem">Send</button>
+		hover:shadow-[0_0_30px_-3px_rgba(0,0,0,0.3)] hover:shadow-teal-400 hover:border-teal-400 hover:border-2 hover:outline-none"" name="kirim">Send</button>
 		</div>
 	  </div>
 	</div>
+
   </form>
+
 
 <footer class="bg-black lg:pb-24 lg:pt-24 md:pb-20 md:pt-14 pb-20 pt-10">
 	  <div class="lg:flex justify-center mx-5 lg:ml-1 ml-16 md:ml-20">

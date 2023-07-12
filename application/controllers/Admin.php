@@ -23,12 +23,12 @@ class Admin extends CI_Controller {
     parent::__construct();
     $this->load->database();
     $this->load->model('Item_model');
-    $this->load->model('user_model');
-    $this->load->model('Message_model');
+    $this->load->model('User_model');
     $this->load->library('upload');
     $this->load->library('session');
     $this->load->library('form_validation');
     $this->load->helper('form');
+    $this->load->model('Message_model');
 	}
 
 	public function index()
@@ -47,7 +47,7 @@ class Admin extends CI_Controller {
         $password = $this->input->post('password');
 
         // Memanggil model User_model untuk melakukan login
-        $user = $this->user_model->login($username, $password);
+        $user = $this->User_model->login($username, $password);
 
         if ($user) {
             // Login berhasil, simpan data pengguna ke session
@@ -123,7 +123,7 @@ class Admin extends CI_Controller {
         $this->Item_model->save_item($gambar, $title, $description, $link);
         redirect('admin'); // Redirect ke halaman utama setelah berhasil melakukan update
     }
-
+  
     //register = ubah data ya
     public function register(){
         if (!$this->session->userdata('admin')) {
@@ -140,7 +140,8 @@ class Admin extends CI_Controller {
     
                 if ($this->form_validation->run() == false) {
                     // Validasi gagal, redirect kembali ke halaman register
-                    $data['data'] = $this->user_model->GetUsername();
+                  	$data['message'] = $this->Message_model->GetMessage();
+                    $data['data'] = $this->User_model->GetUsername();
                     $this->load->view('admin/halaman_register', $data);
                     
                 } else {
@@ -155,11 +156,11 @@ class Admin extends CI_Controller {
                         $password = null;
 
 
-                    $this->user_model->update_admin($id, $username, $password);
+                    $this->User_model->update_admin($id, $username, $password);
                     redirect('register');
                 }
             }else{
-                $data['data'] = $this->user_model->GetUsername();
+                $data['data'] = $this->User_model->GetUsername();
                 $data['message'] = $this->Message_model->GetMessage();
                 $this->load->view('admin/halaman_register', $data);
             }
@@ -172,5 +173,7 @@ class Admin extends CI_Controller {
         $this->Message_model->deleteMessage($id);
         redirect('register');
     }
+
+
 
 }

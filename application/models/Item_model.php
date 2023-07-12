@@ -5,6 +5,7 @@ class Item_model extends CI_Model {
 
     public function get_items()
     {
+        $this->db->order_by('id', 'desc');
         // Mengambil semua item dari tabel
         $query = $this->db->get('portolist');
         return $query->result();
@@ -44,7 +45,6 @@ class Item_model extends CI_Model {
     
         $this->db->where('id', $id);
         $this->db->update('portolist', $data);
-        var_dump($password);
     }
 
     public function delete_item($id)

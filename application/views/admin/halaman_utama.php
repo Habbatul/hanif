@@ -67,7 +67,7 @@
 	todos: [],
 	async fetchData() {
 		try {
-			const response = await fetch('http://localhost/eli/api/portofolio	', { method: 'post' });
+			const response = await fetch('http://localhost/hanif/api/portofolio', { method: 'post' });
 			const data = await response.json();
 			console.log(data);
 			this.todos = data.data;
@@ -91,7 +91,7 @@
 			<a href="admin/logout" class="ml-6 md:ml-[2rem] xl:ml-[2rem] font-Inter font-bold text-md md:text-xl text-white hover:text-green-100 hover:cursor-pointer no-underline">LOGOUT</a>
 			<div>
 				<a href="admin" class="mr-4 lg:mr-6 md:mr-[2rem] xl:mr-[2rem] font-Inter font-bold text-md md:text-xl text-white hover:text-green-100 hover:cursor-pointer no-underline">Content</a>
-				<a href="register" class="mr-4 lg:mr-9 font-Inter font-bold text-md md:text-xl text-white hover:text-green-100 hover:cursor-pointer no-underline">Register</a>
+				<a href="register" class="mr-4 lg:mr-9 font-Inter font-bold text-md md:text-xl text-white hover:text-green-100 hover:cursor-pointer no-underline">Other</a>
 			</div>
 		</div>
 	</nav>
@@ -319,7 +319,7 @@
 			<!--Footer-->
 			<div class="flex justify-end pt-2">
 				<button type="button" class="px-4 bg-transparent p-3 rounded-lg text-stone-900 hover:bg-gray-100 hover:text-red-800 mr-2" @click="alert(selectedValue)">Action</button>
-				<button class="modal-close px-4 bg-stone-900 p-3 rounded-lg text-white hover:bg-red-800" value="tambahItem" name="tambahItem">Ubah</button>
+				<button class="modal-close px-4 bg-stone-900 p-3 rounded-lg text-white hover:bg-red-800" value="tambahItem" name="tambahItem">Tambah</button>
 			</div>
 			</form>
 
@@ -377,7 +377,7 @@
     const linkInput = document.getElementById('linkInput2');
 
     const titleError = document.getElementById('titleError2');
-    const descriptionError = document.getElementById('descriptionError2');
+    const descriptionError = document.getElementById('descriptionError2');f
     const linkError = document.getElementById('linkError2');
 
     let isValid = true;

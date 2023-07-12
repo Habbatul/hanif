@@ -26,11 +26,16 @@ class Portofolio extends CI_Controller {
 
 	public function index()
 	{
+          // Mengizinkan akses dari semua asal (URL)
+      $allowedOrigin = 'https://habbatul.github.io';
+		header('Access-Control-Allow-Origin: ' . $allowedOrigin);
+      
+      
 		$response['code'] = 200;
 		$response['status'] = 'success';
 		
 		// Mengambil data portofolio dari database
-		$portfolios = $this->db->get('portolist')->result();
+		$portfolios = $this->db->order_by('id', 'desc')->get('portolist')->result();
 	
 		// Melakukan escaping pada teks yang akan ditampilkan dalam respons
 		foreach ($portfolios as $portfolio) {
