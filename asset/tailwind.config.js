@@ -32,7 +32,7 @@ module.exports = {
         // => @media (min-width: 1536px) { ... }
         '2xl5': '1820px',
 
-        '3xl': '2133px',
+        '3xl': '2048px',
     }
   },
 }

@@ -168,9 +168,9 @@ if(isset($error)){
 		<div class="stackUsed md:ml-10 md:mt-2 lg:mt-8 2xl:max-w-xl 2xl5:text-[6rem] 2xl5:leading-[6.8rem] 2xl5:max-w-2xl
 		text-[2rem] leading-[2.4rem] ml-4 max-w-[15rem] xl:font-thin
 		 2xl:text-[5rem] 2xl:leading-[6rem] xl:text-[4rem] xl:leading-[4.7rem] 
-		 xl:max-w-lg font-Inter text-white inline-block 2xl:mb-20 xl:mb-0
+		 xl:max-w-lg font-Inter text-white inline-block 2xl:mb-10 xl:mb-0
 		 md:text-[3.3rem] md:leading-[3.6rem] md:max-w-[24rem]">
-			<span>I Have Many <br> Skill Including Developing	
+			<span>I Have Many <br> Skill Including Developing
 
 			<div x-data="{ 
 					text: ['Website', 'DesktopApp', 'Android', 'Game 3D/2D'],
@@ -195,7 +195,7 @@ if(isset($error)){
 							}
 						}
 					}, isDeleting ? deletingDelay : typingDelay)"
-					class="absolute font-Inter"></span>
+					class="absolute font-Inter xl:pt-4"></span>
 			</div>
 
 			</span>
@@ -203,7 +203,7 @@ if(isset($error)){
 		
 
 		<!-- Button Login -->
-		<div @click="showModal=true" class="gambar-han scrollAnimate absolute right-0 flex group hover:cursor-pointer 2xl:mr-[42rem] 2xl:mt-[-16.5rem] 
+		<div @click="showModal=true" class="gambar-han scrollAnimate absolute right-0 flex group hover:cursor-pointer 2xl:mr-[37rem] 2xl:mt-[-15.5rem] 
 		md:mt-[6.7rem] md:mr-[34rem] xl:mr-[30rem] xl:mt-[-9rem] 2xl5:mt-[-21rem] 2xl5:mr-[46rem]
 		mt-[5.4rem] mr-[12.3rem]">
 			<img class="2xl5:h-[20rem] 2xl:h-[15rem] xl:h-[13rem] md:h-[11rem] h-[8rem]
@@ -218,23 +218,23 @@ if(isset($error)){
 		animate-spin-slow pointer-events-none xl:h-[240%] 2xl:h-[200%] 
 		right-[-11rem] mt-[-13rem] h-[400%]" src="asset/TextMuter.svg" />
 	
-		<div class="scrollAnimate absolute biruTua xl:p-14 right-0 inline-block 2xl:mt-[19rem] xl:mt-[15rem] xl:pb-14 2xl5:mt-[20rem]
-		md:p-[1.3rem]  md:mt-[23rem] p-4 lg:pr-8 pr-0
+		<div class="scrollAnimate absolute biruTua xl:p-14 right-0 inline-block 2xl:pr-[3rem] 2xl:mt-[19rem] xl:mt-[15.8rem] xl:pb-14 2xl5:mt-[20rem]
+		md:p-[1.3rem]  md:mt-[23rem] p-4 lg:pr-8 pr-0 2xl5:pr-8
 		mt-[18rem] 
 		shadow-[-6px_-6px_50px_0.05px_rgba(0,0,0,0.3)]">
-			<h3 class="text-white font-Inter font-bold 2xl5:text-8xl 2xl:text-7xl xl:text-5xl md:pb-4  
-			2xl:max-w-xl xl:max-w-sm 2xl5:mr-[15rem] xl:mr-[7rem] 2xl:mr-[8rem] leading-tight
+			<h3 class="text-white font-Inter font-bold 2xl5:text-8xl 2xl:text-[4.1rem] xl:text-5xl md:pb-4  
+			2xl5:max-w-xl 2xl:max-w-lg xl:max-w-sm 2xl5:mr-[15rem] xl:mr-[7rem] 2xl:mr-[8rem] leading-tight
 			text-[1.4rem] max-w-[11rem] mr-[4rem]  pb-0
 			md:text-[3rem] md:max-w-[18rem] md:mr-[18rem]">Tech yang dikuasai</h3>
 
 			<div x-data="{ show: true }" x-init="setInterval(() => show = !show, 2800)">
 				<p x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-500" 
-				  x-show="show" class="text-white lg:pt-4 md:pt-[0rem]  2xl5:text-[2.6rem] 2xl:text-[2.4rem] 
+				  x-show="show" class="text-white lg:pt-4 md:pt-[0rem]  2xl5:text-[2.6rem] 2xl:text-[2rem] 
 				  xl:text-[1.5rem] md:text-[1.7rem] mt-5 font-IBM-Plex-Sans
 				  pt-[0rem] text-[0.8rem]">AlpineJS, Tailwind, Laravel, Codeigniter</p>
 			  
 				<p x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-500"
-				  x-show="!show" class="text-white lg:pt-4 md:pt-[0rem] 2xl5:text-[2.6rem] 2xl:text-[2.4rem] xl:text-[1.5rem]
+				  x-show="!show" class="text-white lg:pt-4 md:pt-[0rem] 2xl5:text-[2.6rem] 2xl:text-[2rem] xl:text-[1.5rem]
 				  md:text-[1.7rem] mt-5 font-IBM-Plex-Sans
 				  text-[0.8rem]">Javascript, CSS, HTML, Koneksi.php</p>
 			  </div>  
@@ -444,12 +444,12 @@ if(isset($error)){
 		</div>
 	  <div class="w-full"></div>
 
-	<div x-init="init()" class="star lg:mx-36 3xl:mx-80 2xl:mx-40 md:mx-10 flex flex-wrap justify-center">
+	<div x-init="init()" class="star lg:mx-36 3xl:mx-72 2xl:mx-10 md:mx-10 flex flex-wrap justify-center">
 	
 			<template x-for="(todo, index) in todos" :key="index">
 				
-				<div @click="showModalDetail= true" x-on:click="selectedValue = todo.id" class="xl:min-w-[24.5rem] lg:mb-24 mb-10 mx-10 2xl:mx-10 xl:mx-10 overflow-hidden rounded-xl bg-hqhan max-w-[18rem] md:max-w-[24rem] md:min-w-[24rem] max-h-sm shadow-[0_2px_10px_1px_rgba(0,0,0,0.5)] hover:opacity-80 hover:cursor-pointer">	
-				<img :src="'upload/' + todo.gambar" :alt="todo.gambar" class="pointer-events-none mx-auto mt-8  md:rounded-xl w-[320px] h-[240px] object-cover"/>
+				<div @click="showModalDetail= true" x-on:click="selectedValue = todo.id" class="2xl5:w-[24.5rem] 2xl:w-[21.5rem] xl:w-[24.5rem] lg:mb-24 mb-10 mx-10 2xl:mx-10 xl:mx-10 overflow-hidden rounded-xl bg-hqhan w-[18rem] md:w-[24rem] max-h-sm shadow-[0_2px_10px_1px_rgba(0,0,0,0.5)] hover:opacity-80 hover:cursor-pointer">	
+				<img :src="'upload/' + todo.gambar" :alt="todo.gambar" class="pointer-events-none mx-auto mt-8  md:rounded-xl w-[320px] h-[240px] 2xl:w-[280px] 2xl:h-[240px] 2xl5:w-[320px] 2xl5:h-[240px] object-cover"/>
 					<div class="py-5 md:px-7 px-4 ">
 						<h3 x-text="todo.title" class="text-center mb-3 text-green-950 font-bold text-xl"></h3>
 						<div class="hijauTua rounded-lg">
