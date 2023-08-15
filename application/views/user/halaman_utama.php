@@ -166,7 +166,7 @@ if(isset($error)){
 
 	<div class="scrollAnimate2 bg-white md:mt-20 mt-[2rem] 2xl:max-w-xs mb-5 md:max-w-[12rem] md:max-h-[1rem] lg:max-h-20 xl:max-w-[16rem] max-w-[8rem] max-h-[0.8rem]">&nbsp;</div>
 		<div class="stackUsed md:ml-10 md:mt-2 lg:mt-8 2xl:max-w-xl 2xl5:text-[6rem] 2xl5:leading-[6.8rem] 2xl5:max-w-2xl
-		text-[2rem] leading-[2.4rem] ml-4 max-w-[15rem] 
+		text-[2rem] leading-[2.4rem] ml-4 max-w-[15rem] xl:font-thin
 		 2xl:text-[5rem] 2xl:leading-[6rem] xl:text-[4rem] xl:leading-[4.7rem] 
 		 xl:max-w-lg font-Inter text-white inline-block 2xl:mb-20 xl:mb-0
 		 md:text-[3.3rem] md:leading-[3.6rem] md:max-w-[24rem]">
