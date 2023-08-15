@@ -16,8 +16,8 @@ if(isset($error)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Han's 3D Website</title>
 
-  	<script type="module" crossorigin src="asset/asset/index.8cda176b.js"></script>
-    <script type="module" crossorigin src="asset/assets/index.725a3ebe.js"></script>
+  	<script type="module" crossorigin src="asset/asset/index.3a267212.js"></script>
+    <script type="module" crossorigin src="asset/assets/index.03c625f2.js"></script>
     <script src="asset/assets/cdn.js" defer></script>
 	<link href="asset/asset/output.css" rel="stylesheet">
 
