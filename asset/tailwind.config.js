@@ -14,6 +14,10 @@ module.exports = {
       'IBM-Plex-Sans': ['IBM Plex Sans', 'sans-serif'],
       'Shadows-Into-Light' : ['Shadows Into Light', 'cursive'],
       'Kaushan-Script' : ['Kaushan Script', 'cursive'],
+      'Nova-Script': ['Nova Script', 'cursive'],
+      'Nova-Flat': ['Nova Flat', 'cursive'],
+      'Maven-Pro': ['Maven Pro', 'sans-serif'],
+      'Prata': ['Prata', 'serif']
     },
     screens:{
         'sm': '640px',

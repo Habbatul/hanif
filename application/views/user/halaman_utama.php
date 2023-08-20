@@ -16,8 +16,8 @@ if(isset($error)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Han's 3D Website</title>
 
-  	<script type="module" crossorigin src="asset/asset/index.3a267212.js"></script>
-    <script type="module" crossorigin src="asset/assets/index.03c625f2.js"></script>
+  	<script type="module" crossorigin src="asset/asset/index.8c19162a.js"></script>
+    <script type="module" crossorigin src="asset/assets/index.f63c5f08.js"></script>
     <script src="asset/assets/cdn.js" defer></script>
 	<link href="asset/asset/output.css" rel="stylesheet">
 
@@ -27,8 +27,9 @@ if(isset($error)){
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&family=Inter:wght@300;400;500;600;700&family=Shadows+Into+Light&family=Kaushan+Script&display=swap" rel="stylesheet">
-
-	
+	<!-- penambahan font -->
+	<link href="https://fonts.googleapis.com/css2?family=Nova+Flat&family=Nova+Script&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Maven+Pro&family=Prata&display=swap" rel="stylesheet">
 
 	<style>
         #canvas2 {
@@ -70,6 +71,7 @@ if(isset($error)){
 			/* atau background-size: 100% 100%; */
 		}
 		.bg-hero{
+			background-color:rgba(0, 58, 60, 1);
 			background-image: url('asset/dragon-scales.svg');
 			/* atau background-size: 100% 100%; */
 			
@@ -113,7 +115,7 @@ if(isset($error)){
 				isSmallScreen = window.innerWidth < 728;
 			}
 			window.addEventListener('resize', updateScreenSize);
-		}">
+		}">  
 
 		<div x-data="{ scrolled: false }" @scroll.window="scrolled = (window.pageYOffset > 0)">
 			<nav @click.outside="showMenu=false" x-show="!(showModal || showModalDel || showModalDetail)" :class="{ 'bg-opacity-60 bg-gray-800 backdrop-filter backdrop-blur-lg fixed w-full z-50 pb-6 pt-6 shadow-[0_4px_10px_0.5px_rgba(0,0,0,0.5)] ease-in duration-500': scrolled, 
@@ -161,12 +163,79 @@ if(isset($error)){
 		<canvas id="canvas" class="shadow-[0_4px_10px_0.5px_rgba(0,0,0,0.5)] rounded-3xl" style="margin-top: 6.4rem;"></canvas>
 	<!-- End-->
 
+
+<!-- ini adalah untuk halaman section terbaru untuk pengenalan dan sosmed -->
+<div class="md:mt-[4%] mt-[6%] flex flex-wrap justify-center w-full">
+	<!-- ini adalah untuk pengenalan -->
+	<div class="flex flex-col md:w-[50%] text-center xl:mr-16 w-[100%] relative">
+
+    <div class="absolute inset-0 flex justify-center items-center">
+        <img src="asset/hand.webp" class="opacity-gradient h-auto max-h-full pointer-events-none">
+    </div>
+
+	<style>
+    .opacity-gradient {
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent);
+        -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent);
+    }
+</style>
+	<p class="xl:px-20 2xl5:px-28 px-14 star
+				mt-5 
+				md:text-[2.45rem] lg:leading-[5rem] lg:text-[3rem]  xl:text-[4.5rem] xl:leading-[5.6rem] 2xl:leading-[7.4rem] 2xl:text-[5.5rem] 2xl5:leading-[8rem] 2xl5:text-[6.7rem] text-[1.75rem]
+				mx-[-3rem] md:mx-[-1.5rem]
+	 text-white"> <span class="font-Prata">Welcome </span><span class="font-Maven-Pro">to My </span><span class="font-Prata">Unique </span><span class="font-Maven-Pro">Porto </span><span class="font-Prata">Website</span> </p>
+
+	 <p class="font-Nova-Flat star
+	 2xl5:text-[1.3rem] 2xl5:leading-[1.7rem] 2xl:text-[1.05rem] xl:text-[0.9rem] lg:text-sm text-[0.6rem]
+	 md:px-14 2xl5:px-20 px-5
+	 text-white 
+	 2xl5:mt-36 2xl:mt-[6.6rem] xl:mt-20 md:mt-[10%] mt-10">
+	 My name is Han, and I enjoy exploring the world of 3D/2D visuals also i love about programming a software (website, desktop, mobile, games). I have been diving into 3D visuals and applying it to my web designs using Three.js, Tween.js, and Three Post Processing. I also have an interest in exploring game technologies, such as using Unity and Making random art with Blender. Additionally, I delve into Software and website creation (website is my main priority, especially BackEnd).
+	 </p>
+
+	 <p class="font-Nova-Flat star
+	 2xl5:text-[1.3rem] 2xl5:leading-[1.7rem] 2xl:text-[1.05rem] xl:text-[0.9rem] lg:text-sm text-[0.6rem]
+	 md:px-14 2xl5:px-20 px-4
+	text-white 
+	2xl5:mt-36 2xl:mt-[6.6rem] xl:mt-20 md:mt-[15%] mt-10">
+	 This website was created by me personally, and most of the photos here are the result of my own captures. Please help spread this URL to your friends who need website creation services. BTW, you can use the website asset in here because it's partial and can clone at my github repo's. This website is not support for the display more than 1440p aspect ratio.
+	 </p>
+
+
+
+	</div>
+	<!-- pengenalan selesai -->
+
+	<!-- ini adalah untuk social card -->
+	<div class="scrollAnimate flex flex-col justify-items-end items-end md:w-[42%] mt-[4.3rem] md:mt-1">
+		<div class="my-auto">
+				<img class=" w-[100%] lg:mr-[-1%] hover:cursor-pointer hover:blur-sm transition-all duration-300" src="SocialCard/github-card.php" alt="" @click="window.location.href ='https://github.com/Habbatul'">
+				<img class=" w-[100%]  lg:mr-[-1%] hover:cursor-pointer hover:blur-sm transition-all duration-300 xl:my-[-2.4rem] 2xl:my-[-2.8rem] my-[-1.5rem]" src="SocialCard/linkedin-card.php" alt="" @click="window.location.href ='https://www.linkedin.com/in/habbatul/'">
+				<img class=" w-[100%] lg:mr-[-1%] hover:cursor-pointer hover:blur-sm transition-all duration-300" src="SocialCard/instagram-card.php" alt="" @click="window.location.href ='https://www.instagram.com/hq.han/'">
+		</div>
+	</div>
+	<!-- social card selesai -->
+</div>
+<!-- akhir untuk halaman section terbaru untuk pengenalan dan sosmed -->
+
+	<!-- transisi antar pengenalan -->
+	<div>
+		<div class="bg-black w-full md:mt-[7%] mt-[16%] lg:mb-[9%] md:mb-[11%] mb-[16%] 2xl:py-20 lg:py-14 py-9 text-center">
+			<p class="2xl5:text-[1.3rem] 2xl5:leading-[1.7rem] 2xl:text-[1.05rem] xl:text-[0.9rem] lg:text-sm text-[0.65rem] leading-[0.7rem]
+			md:px-14 2xl5:px-20 px-6
+			 font-Nova-Script text-white">
+"Loneliness is the essential thing. One must be lonely, profoundly lonely, to develop all the idiosyncrasies, to understand oneself as well as others."</p>
+		</div>
+	</div>
+	<!-- Pengenalan selesai -->
+
+
 	<!--wis terlanjur dikasih section gaopo biar gampang nata position absolute -->
 	<section id="hero" class="max-w-full relative md:pb-[11rem] lg:pb-0 pb-[4rem]" style="scroll-margin-top: 100px">
 
 	<div class="scrollAnimate2 bg-white md:mt-20 mt-[2rem] 2xl:max-w-xs mb-5 md:max-w-[12rem] md:max-h-[1rem] lg:max-h-20 xl:max-w-[16rem] max-w-[8rem] max-h-[0.8rem]">&nbsp;</div>
 		<div class="stackUsed md:ml-10 md:mt-2 lg:mt-8 2xl:max-w-xl 2xl5:text-[6rem] 2xl5:leading-[6.8rem] 2xl5:max-w-2xl
-		text-[2rem] leading-[2.4rem] ml-4 max-w-[15rem] xl:font-thin
+		text-[2rem] leading-[2.4rem] ml-4 max-w-[15rem] xl:font-thin font-thin
 		 2xl:text-[5rem] 2xl:leading-[6rem] xl:text-[4rem] xl:leading-[4.7rem] 
 		 xl:max-w-lg font-Inter text-white inline-block 2xl:mb-10 xl:mb-0
 		 md:text-[3.3rem] md:leading-[3.6rem] md:max-w-[24rem]">
@@ -179,23 +248,34 @@ if(isset($error)){
 					isDeleting: false,
 					typingDelay: 100,
 					deletingDelay: 50,
+					status:true,
 				}">
-				<span x-html="text[index].substring(0, charIndex) + '<span x-show=\'charIndex%2==0\' class=\'2xl:text-[4rem] xl:text-[3.2rem] 2xl5:text-[4.8rem] md:text-[2.6rem] text-[1.7rem] font-bold\'> |</span>'" x-init="
+				<span x-html="text[index].substring(0, charIndex) + '<span x-show=\'status==true\' class=\'2xl:text-[4rem] xl:text-[3.2rem] 2xl5:text-[4.8rem] md:text-[2.6rem] text-[1.7rem] font-normal\'>|</span>'" x-init="
 					setInterval(() => {
 						if (isDeleting) {
 							charIndex--;
 							if (charIndex === 0) {
 								isDeleting = false;
 								index = (index + 1) % text.length;
+		
 							}
 						} else {
 							charIndex++;
 							if (charIndex === text[index].length) {
+							status = false;
+							setTimeout(() => {	
 								isDeleting = true;
+								setTimeout(() => {
+									status = true;
+								}, 500);
+							}, 500);
+
+
+								
 							}
 						}
 					}, isDeleting ? deletingDelay : typingDelay)"
-					class="absolute font-Inter xl:pt-4"></span>
+					class="absolute font-Inter"></span>
 			</div>
 
 			</span>
@@ -203,10 +283,10 @@ if(isset($error)){
 		
 
 		<!-- Button Login -->
-		<div @click="showModal=true" class="gambar-han scrollAnimate absolute right-0 flex group hover:cursor-pointer 2xl:mr-[37rem] 2xl:mt-[-15.5rem] 
-		md:mt-[6.7rem] md:mr-[34rem] xl:mr-[30rem] xl:mt-[-9rem] 2xl5:mt-[-21rem] 2xl5:mr-[46rem]
+		<div @click="showModal=true" class="gambar-han scrollAnimate absolute right-0 flex group hover:cursor-pointer 2xl:mr-[36.5rem] 2xl:mt-[-16.7rem] 
+		md:mt-[6.7rem] md:mr-[34rem] xl:mr-[30rem] xl:mt-[-9rem] 2xl5:mt-[-21rem] 2xl5:mr-[46rem] lg:mt-[-6rem] lg:mr-[30rem]
 		mt-[5.4rem] mr-[12.3rem]">
-			<img class="2xl5:h-[20rem] 2xl:h-[15rem] xl:h-[13rem] md:h-[11rem] h-[8rem]
+			<img class="2xl5:h-[20rem] 2xl:h-[16.5rem] xl:h-[13rem] md:h-[11rem] h-[8rem]
 			
 			pointer-events-none translate-y-[0.5rem] translate-x-[0.5rem] opacity-50 transition duration-500 group-hover:translate-x-0 group-hover:translate-y-0" src="asset/hanMid.png"/>
 			<img class="pointer-events-none translate-y-[-0.5rem] translate-x-[-0.5rem] absolute transition duration-500 group-hover:translate-x-0 group-hover:translate-y-0" src="asset/hanMid.png" />
@@ -219,25 +299,32 @@ if(isset($error)){
 		right-[-11rem] mt-[-13rem] h-[400%]" src="asset/TextMuter.svg" />
 	
 		<div class="scrollAnimate absolute biruTua xl:p-14 right-0 inline-block 2xl:pr-[3rem] 2xl:mt-[19rem] xl:mt-[15.8rem] xl:pb-14 2xl5:mt-[20rem]
-		md:p-[1.3rem]  md:mt-[23rem] p-4 lg:pr-8 pr-0 2xl5:pr-8
+		md:p-[1.3rem]  md:mt-[23rem] p-4 2xl5:pr-8 xl:pr-8 lg:pr-0 lg:mt-[14rem] pr-0 
 		mt-[18rem] 
 		shadow-[-6px_-6px_50px_0.05px_rgba(0,0,0,0.3)]">
 			<h3 class="text-white font-Inter font-bold 2xl5:text-8xl 2xl:text-[4.1rem] xl:text-5xl md:pb-4  
 			2xl5:max-w-xl 2xl:max-w-lg xl:max-w-sm 2xl5:mr-[15rem] xl:mr-[7rem] 2xl:mr-[8rem] leading-tight
 			text-[1.4rem] max-w-[11rem] mr-[4rem]  pb-0
-			md:text-[3rem] md:max-w-[18rem] md:mr-[18rem]">Tech yang dikuasai</h3>
+			md:text-[3rem] md:max-w-[18rem] md:mr-[18rem]">Stack yang dikuasai</h3>
 
-			<div x-data="{ show: true }" x-init="setInterval(() => show = !show, 2800)">
-				<p x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-500" 
-				  x-show="show" class="text-white lg:pt-4 md:pt-[0rem]  2xl5:text-[2.6rem] 2xl:text-[2rem] 
-				  xl:text-[1.5rem] md:text-[1.7rem] mt-5 font-IBM-Plex-Sans
-				  pt-[0rem] text-[0.8rem]">AlpineJS, Tailwind, Laravel, Codeigniter</p>
-			  
-				<p x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-500"
-				  x-show="!show" class="text-white lg:pt-4 md:pt-[0rem] 2xl5:text-[2.6rem] 2xl:text-[2rem] xl:text-[1.5rem]
-				  md:text-[1.7rem] mt-5 font-IBM-Plex-Sans
-				  text-[0.8rem]">Javascript, CSS, HTML, Koneksi.php</p>
-			  </div>  
+			<div x-data="{ show: 1 }" x-init="setInterval(() => { show = show === 4 ? 1 : show + 1 }, 2800)">
+				<p x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" 
+					x-show="show === 1" class="text-white lg:pt-4 md:pt-[0rem]  2xl5:text-[2.6rem] 2xl:text-[2rem] 
+					xl:text-[1.5rem] md:text-[1.7rem] mt-5 font-IBM-Plex-Sans text-[0.8rem]">SpringBoot, Java, JavaFX, Android</p>
+
+				<p x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" 
+					x-show="show === 2" class="text-white lg:pt-4 md:pt-[0rem]  2xl5:text-[2.6rem] 2xl:text-[2rem] 
+					xl:text-[1.5rem] md:text-[1.7rem] mt-5 font-IBM-Plex-Sans text-[0.8rem]">AlpineJS, Tailwind, Laravel, Livewire</p>
+
+				<p x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" 
+					x-show="show === 3" class="text-white lg:pt-4 md:pt-[0rem]  2xl5:text-[2.6rem] 2xl:text-[2rem] 
+					xl:text-[1.5rem] md:text-[1.7rem] mt-5 font-IBM-Plex-Sans text-[0.8rem]">Unity 3D, Blender, ThreeJS, TweenJS</p>
+				
+				<p x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+					x-show="show === 4" class="text-white lg:pt-4 md:pt-[0rem] 2xl5:text-[2.6rem] 2xl:text-[2rem] xl:text-[1.5rem]
+					md:text-[1.7rem] mt-5 font-IBM-Plex-Sans text-[0.8rem]">Javascript, CSS, HTML, PHP, Codeigniter</p>
+			</div>
+
 		</div>
 
 
