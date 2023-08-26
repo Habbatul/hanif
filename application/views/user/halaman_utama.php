@@ -72,7 +72,7 @@ if(isset($error)){
 		}
 		.bg-hero{
 			background-color:rgba(0, 58, 60, 1);
-			background-image: url('asset/dragon-scales.svg');
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 1000'%3E%3Crect fill='%23003A3C' width='100' height='1000'/%3E%3Cg fill-opacity='0.87'%3E%3Ccircle fill='%23003A3C' cx='50' cy='0' r='50'/%3E%3Cg fill='%2300393b' %3E%3Ccircle cx='0' cy='50' r='50'/%3E%3Ccircle cx='100' cy='50' r='50'/%3E%3C/g%3E%3Ccircle fill='%2300383a' cx='50' cy='100' r='50'/%3E%3Cg fill='%23003638' %3E%3Ccircle cx='0' cy='150' r='50'/%3E%3Ccircle cx='100' cy='150' r='50'/%3E%3C/g%3E%3Ccircle fill='%23003537' cx='50' cy='200' r='50'/%3E%3Cg fill='%23003436' %3E%3Ccircle cx='0' cy='250' r='50'/%3E%3Ccircle cx='100' cy='250' r='50'/%3E%3C/g%3E%3Ccircle fill='%23003335' cx='50' cy='300' r='50'/%3E%3Cg fill='%23003233' %3E%3Ccircle cx='0' cy='350' r='50'/%3E%3Ccircle cx='100' cy='350' r='50'/%3E%3C/g%3E%3Ccircle fill='%23003132' cx='50' cy='400' r='50'/%3E%3Cg fill='%23002f31' %3E%3Ccircle cx='0' cy='450' r='50'/%3E%3Ccircle cx='100' cy='450' r='50'/%3E%3C/g%3E%3Ccircle fill='%23002e30' cx='50' cy='500' r='50'/%3E%3Cg fill='%23002d2f' %3E%3Ccircle cx='0' cy='550' r='50'/%3E%3Ccircle cx='100' cy='550' r='50'/%3E%3C/g%3E%3Ccircle fill='%23002c2d' cx='50' cy='600' r='50'/%3E%3Cg fill='%23002b2c' %3E%3Ccircle cx='0' cy='650' r='50'/%3E%3Ccircle cx='100' cy='650' r='50'/%3E%3C/g%3E%3Ccircle fill='%23002a2b' cx='50' cy='700' r='50'/%3E%3Cg fill='%2300292a' %3E%3Ccircle cx='0' cy='750' r='50'/%3E%3Ccircle cx='100' cy='750' r='50'/%3E%3C/g%3E%3Ccircle fill='%23002729' cx='50' cy='800' r='50'/%3E%3Cg fill='%23002627' %3E%3Ccircle cx='0' cy='850' r='50'/%3E%3Ccircle cx='100' cy='850' r='50'/%3E%3C/g%3E%3Ccircle fill='%23002526' cx='50' cy='900' r='50'/%3E%3Cg fill='%23002425' %3E%3Ccircle cx='0' cy='950' r='50'/%3E%3Ccircle cx='100' cy='950' r='50'/%3E%3C/g%3E%3Ccircle fill='%23002324' cx='50' cy='1000' r='50'/%3E%3C/g%3E%3C/svg%3E");
 			/* atau background-size: 100% 100%; */
 			
 		}
@@ -127,7 +127,7 @@ if(isset($error)){
 				<ul class="flex items-center justify-end mx-10 lg:mx-12 mt-1">
 					
 						<li x-show="!isSmallScreen" class="ml-4 font-Inter font-medium text-xl text-white"><a href="#hero">Profile</a></li>
-						<li x-show="!isSmallScreen" class="ml-4 font-Inter font-medium text-xl text-white"><a href="#quotes">Quotes</a></li>
+						<li x-show="!isSmallScreen" class="ml-4 font-Inter font-medium text-xl text-white"><a href="#quotes">About</a></li>
 						<li x-show="!isSmallScreen" class="ml-4 lg:mr-5 font-Inter font-medium text-xl text-white"><a a href="#project">Portofolio</a></li>
 
 				
@@ -141,7 +141,7 @@ if(isset($error)){
 		
 				<ul x-show="showMenu" class="relative top-full right-0 pt-3 pb-2 px-4 max-w-[8rem] bg-opacity-10" x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" >
 					<li class="mb-5 mt-[-0.5rem]"><a href="#hero" class="block font-Inter font-medium text-xl text-white hover:text-green-100">Profile</a></li>
-					<li class="mb-5"><a href="#quotes" class="block font-Inter font-medium text-xl text-white hover:text-green-100">Quotes</a></li>
+					<li class="mb-5"><a href="#quotes" class="block font-Inter font-medium text-xl text-white hover:text-green-100">About</a></li>
 					<li class="mb-5"><a href="#project" class="block lg:mr-5 font-Inter font-medium text-xl text-white hover:text-green-100">Porto</a></li>
 					<li class="mb-[-1.3rem]">
 						<button @click="showMenu = !showMenu" x-show="isSmallScreen" class="text-white focus:outline-none right-0">
@@ -165,24 +165,24 @@ if(isset($error)){
 
 
 <!-- ini adalah untuk halaman section terbaru untuk pengenalan dan sosmed -->
-<div class="md:mt-[4%] mt-[6%] flex flex-wrap justify-center w-full">
+<div class="md:mt-[4%] mt-[6%] flex flex-wrap justify-center w-full" id="hero" style="scroll-margin-top: 80px">
 	<!-- ini adalah untuk pengenalan -->
 	<div class="flex flex-col md:w-[50%] text-center xl:mr-16 w-[100%] relative">
 
     <div class="absolute inset-0 flex justify-center items-center">
-        <img src="asset/hand.webp" class="opacity-gradient h-auto max-h-full pointer-events-none">
+        <img src="asset/astrotanganhanFinal2.webp" class="opacity-gradient h-auto max-h-full pointer-events-none">
     </div>
 
 	<style>
     .opacity-gradient {
-        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent);
-        -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent);
+        mask-image: linear-gradientlinear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.25),rgba(0, 0, 0, 0.25),rgba(0, 0, 0, 0.25),rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.1), transparent);
+        -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.25),rgba(0, 0, 0, 0.25),rgba(0, 0, 0, 0.25),rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.1), transparent);
     }
 </style>
-	<p class="xl:px-20 2xl5:px-28 px-14 star
+	<p id="tulisan atas" class="xl:px-20 2xl5:px-28 px-14 star
 				mt-5 
-				md:text-[2.45rem] lg:leading-[5rem] lg:text-[3rem]  xl:text-[4.5rem] xl:leading-[5.6rem] 2xl:leading-[7.4rem] 2xl:text-[5.5rem] 2xl5:leading-[8rem] 2xl5:text-[6.7rem] text-[1.75rem]
-				mx-[-3rem] md:mx-[-1.5rem]
+				md:text-[2.45rem] lg:leading-[5rem] lg:text-[3rem]  xl:text-[4.5rem] xl:leading-[5.6rem] 2xl:leading-[6.8rem] 2xl:text-[5.4rem] 2xl5:leading-[8rem] 2xl5:text-[6.7rem] text-[1.75rem]
+				mx-[-3rem] md:mx-[-1.5rem] 2xl:mx-[-0.8rem]
 	 text-white"> <span class="font-Prata">Welcome </span><span class="font-Maven-Pro">to My </span><span class="font-Prata">Unique </span><span class="font-Maven-Pro">Porto </span><span class="font-Prata">Website</span> </p>
 
 	 <p class="font-Nova-Flat star
@@ -221,7 +221,7 @@ if(isset($error)){
 	<!-- transisi antar pengenalan -->
 	<div>
 		<div class="bg-black w-full md:mt-[7%] mt-[16%] lg:mb-[9%] md:mb-[11%] mb-[16%] 2xl:py-20 lg:py-14 py-9 text-center">
-			<p class="2xl5:text-[1.3rem] 2xl5:leading-[1.7rem] 2xl:text-[1.05rem] xl:text-[0.9rem] lg:text-sm text-[0.65rem] leading-[0.7rem]
+			<p class="2xl5:text-[1.3rem] 2xl5:leading-[1.7rem] 2xl:text-[1.05rem] xl:text-[0.9rem] lg:text-sm md:leading-[1rem] text-[0.65rem] leading-[0.7rem]
 			md:px-14 2xl5:px-20 px-6
 			 font-Nova-Script text-white">
 "Loneliness is the essential thing. One must be lonely, profoundly lonely, to develop all the idiosyncrasies, to understand oneself as well as others."</p>
@@ -231,7 +231,7 @@ if(isset($error)){
 
 
 	<!--wis terlanjur dikasih section gaopo biar gampang nata position absolute -->
-	<section id="hero" class="max-w-full relative md:pb-[11rem] lg:pb-0 pb-[4rem]" style="scroll-margin-top: 100px">
+	<section  class="max-w-full relative md:pb-[11rem] lg:pb-0 pb-[4rem]">
 
 	<div class="scrollAnimate2 bg-white md:mt-20 mt-[2rem] 2xl:max-w-xs mb-5 md:max-w-[12rem] md:max-h-[1rem] lg:max-h-20 xl:max-w-[16rem] max-w-[8rem] max-h-[0.8rem]">&nbsp;</div>
 		<div class="stackUsed md:ml-10 md:mt-2 lg:mt-8 2xl:max-w-xl 2xl5:text-[6rem] 2xl5:leading-[6.8rem] 2xl5:max-w-2xl
@@ -302,26 +302,26 @@ if(isset($error)){
 		md:p-[1.3rem]  md:mt-[23rem] p-4 2xl5:pr-8 xl:pr-8 lg:pr-0 lg:mt-[14rem] pr-0 
 		mt-[18rem] 
 		shadow-[-6px_-6px_50px_0.05px_rgba(0,0,0,0.3)]">
-			<h3 class="text-white font-Inter font-bold 2xl5:text-8xl 2xl:text-[4.1rem] xl:text-5xl md:pb-4  
+			<h3 class="text-white font-Inter font-bold 2xl5:text-7xl 2xl:text-[3.8rem] xl:text-5xl md:pb-4  
 			2xl5:max-w-xl 2xl:max-w-lg xl:max-w-sm 2xl5:mr-[15rem] xl:mr-[7rem] 2xl:mr-[8rem] leading-tight
 			text-[1.4rem] max-w-[11rem] mr-[4rem]  pb-0
 			md:text-[3rem] md:max-w-[18rem] md:mr-[18rem]">Stack yang dikuasai</h3>
 
 			<div x-data="{ show: 1 }" x-init="setInterval(() => { show = show === 4 ? 1 : show + 1 }, 2800)">
 				<p x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" 
-					x-show="show === 1" class="text-white lg:pt-4 md:pt-[0rem]  2xl5:text-[2.6rem] 2xl:text-[2rem] 
+					x-show="show === 1" class="text-white lg:pt-4 md:pt-[0rem]  2xl5:text-[2.5rem] 2xl:text-[2rem] 
 					xl:text-[1.5rem] md:text-[1.7rem] mt-5 font-IBM-Plex-Sans text-[0.8rem]">SpringBoot, Java, JavaFX, Android</p>
 
 				<p x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" 
-					x-show="show === 2" class="text-white lg:pt-4 md:pt-[0rem]  2xl5:text-[2.6rem] 2xl:text-[2rem] 
+					x-show="show === 2" class="text-white lg:pt-4 md:pt-[0rem]  2xl5:text-[2.5rem] 2xl:text-[2rem] 
 					xl:text-[1.5rem] md:text-[1.7rem] mt-5 font-IBM-Plex-Sans text-[0.8rem]">AlpineJS, Tailwind, Laravel, Livewire</p>
 
 				<p x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" 
-					x-show="show === 3" class="text-white lg:pt-4 md:pt-[0rem]  2xl5:text-[2.6rem] 2xl:text-[2rem] 
+					x-show="show === 3" class="text-white lg:pt-4 md:pt-[0rem]  2xl5:text-[2.5rem] 2xl:text-[2rem] 
 					xl:text-[1.5rem] md:text-[1.7rem] mt-5 font-IBM-Plex-Sans text-[0.8rem]">Unity 3D, Blender, ThreeJS, TweenJS</p>
 				
 				<p x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
-					x-show="show === 4" class="text-white lg:pt-4 md:pt-[0rem] 2xl5:text-[2.6rem] 2xl:text-[2rem] xl:text-[1.5rem]
+					x-show="show === 4" class="text-white lg:pt-4 md:pt-[0rem] 2xl5:text-[2.5rem] 2xl:text-[2rem] xl:text-[1.5rem]
 					md:text-[1.7rem] mt-5 font-IBM-Plex-Sans text-[0.8rem]">Javascript, CSS, HTML, PHP, Codeigniter</p>
 			</div>
 
@@ -440,8 +440,10 @@ if(isset($error)){
         <!-- content -->
         <div class="flex flex-col justify-center items-center">
             <div class="flex">
-                <img :src="'upload/' + todoGambar" :alt="todoGambar" class="w-full max-w-lg h-[28rem] md:max-h-full max-h-[18.5rem] object-cover shadow-[0_4px_10px_0.5px_rgba(0,0,0,0.5)] rounded-md">
-            </div>
+				<a :href = "todoLink">
+                <img :src="'upload/' + todoGambar" :alt="todoGambar" class="hover:cursor-pointer hover:brightness-50 w-full max-w-lg h-[28rem] md:max-h-full max-h-[18.5rem] object-cover shadow-[0_4px_10px_0.5px_rgba(0,0,0,0.5)] rounded-md">
+				</a>
+			</div>
             <div class="flex justify-center pt-1">
 				<a :href = "todoLink">
 					<h3 class="pt-5 text-2xl pb-5 md:text-5xl md:pb-5 font-Shadows-Into-Light font-extrabold hover:text-red-600 cursor-pointer" x-text="todoTitle"></h3>
@@ -468,32 +470,25 @@ if(isset($error)){
 	<img src="asset/WWhite.svg" width="400" class="pointer-events-none ml-20">
 	<img src="asset/WaltQuotes.svg" class="pointer-events-none ml-32 mt-20" width="900">-->
 
-	<div style="scroll-margin-top: 100px" id="quotes" x-data="{ show1: true, show2: false}" class="flex justify-center bg-ini 2xl:py-36 xl:py-24 md:py-[7rem]  py-20"
-		x-init="
-
-          setInterval(function() {
-              if (show1) {
-                setTimeout(function() {
-                  show1 = false;
-                  setTimeout(function() {
-                    show2 = true;
-                  }, 1000);
-                }, 3000); // Penundaan sebelum menjalankan logika di dalam blok setTimeout terluar
-              } else if (show2) {
-                setTimeout(function() {
-                  show2 = false;
-                  setTimeout(function() {
-                    show1 = true;
-                  }, 1000);
-                }, 3000); // Penundaan sebelum menjalankan logika di dalam blok setTimeout terluar
-              }
-          }, 0);
-		  
-		">
+	<div id="quotes" class="flex justify-center bg-ini 2xl5:pt-40 2xl5:pb-[26rem] 2xl:pt-32 2xl:pb-60 lg:pt-32 lg:pb-40 md:pt-[10rem] md:pb-[1.2rem] pt-28 pb-14">
  
 		<div class="flex flex-wrap justify-center">
                   <div class="absolute">
-                  <div class="flex flex-wrap justify-center">
+		  			<div class="flex flex-wrap justify-center items-center">
+						<img src="asset/astrohan2.webp" class="scrollAstro 2xl5:h-[46rem] 2xl:h-[37rem] xl:h-[27rem] lg:h-[25rem] h-64 md:h-[24rem] pointer-events-none">
+						<div class="lg:w-[40%] md:w-[50%] lg:mt-[-6rem]">
+							<p class="font-Inter star md:text-justify text-center
+							2xl5:text-[1.3rem] 2xl5:leading-[1.7rem] 2xl:text-[1.05rem] xl:text-[0.9rem] lg:text-sm md:text-[0.8rem] text-[0.6rem]
+							md:ml-5 lg:px-14 2xl5:px-20 px-5
+							text-white 
+							2xl5:mt-36 2xl:mt-[6.6rem] xl:mt-20 md:mt-[10%] mt-5">
+							Tech stack yang digunakan dalam pembuatan portofolio ini mencakup lingkungan MVC dengan framework CodeIgniter untuk bagian backend; menggunakan Tailwind CSS dan Alpine.js sebagai framework frontend; Three.js dan Three-post-processing (pmndr), serta Tween.js digunakan untuk implementasi elemen 3D pada kanvas; Cropper.js digunakan untuk fitur pemotongan gambar; beberapa fitur juga mengandalkan pengembangan menggunakan PHP, JavaScript, dan CSS native. 
+
+							</p>
+						</div>
+					</div>
+
+                  <!-- <div class="flex flex-wrap justify-center">
                     <img  x-show="show1" src="asset/NTesla.svg" class="pointer-events-none 2xl:h-[27rem] lg:h-80 h-48 md:h-[20rem]" 
                         x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
                         x-transition:leave="ease-out duration-500" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
@@ -510,10 +505,10 @@ if(isset($error)){
                     <img x-show="show2" src="asset/WaltQuotes.svg" class="pointer-events-none 2xl:ml-[6rem] 2xl:mt-48 2xl:h-[6rem] xl:h-[4rem] h-[1.8rem] mt-5 lg:mt-32 ml-5 lg:ml-10 md:h-[4rem] md:mt-[3rem] w-full lg:w-6/12"
                         x-transition:enter="ease-out duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
                         x-transition:leave="ease-out duration-500" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"> 
-                    </div>
+                    </div> -->
                   </div>
 		</div>
-				<div class="flex -z-40 relative 2xl:h-[27rem] lg:h-80 md:h-[27rem] md:mt mx-w-[0px] h-[13.8rem] mt-5 ">&nbsp;</div>
+				<div class="flex -z-40 relative 2xl:h-[27rem] lg:h-80 md:h-[27rem] md:mt mx-w-[0px] h-[25rem] mt-5 ">&nbsp;</div>
 	  </div>  
 
 
