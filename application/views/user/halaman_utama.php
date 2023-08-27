@@ -16,8 +16,8 @@ if(isset($error)){
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Han's 3D Website</title>
 
-  	<script type="module" crossorigin src="asset/asset/index.8c19162a.js"></script>
-    <script type="module" crossorigin src="asset/assets/index.f63c5f08.js"></script>
+  	<script type="module" crossorigin src="asset/asset/index.3e42ecfa.js"></script>
+    <script type="module" crossorigin src="asset/assets/index.b34f6aec.js"></script>
     <script src="asset/assets/cdn.js" defer></script>
 	<link href="asset/asset/output.css" rel="stylesheet">
 
@@ -440,7 +440,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
         <!-- content -->
         <div class="flex flex-col justify-center items-center">
             <div class="flex">
-				<a :href = "todoLink">
+				<a :href = "todoLink" target="_blank" >
                 <img :src="'upload/' + todoGambar" :alt="todoGambar" class="hover:cursor-pointer hover:brightness-50 w-full max-w-lg h-[28rem] md:max-h-full max-h-[18.5rem] object-cover shadow-[0_4px_10px_0.5px_rgba(0,0,0,0.5)] rounded-md">
 				</a>
 			</div>
