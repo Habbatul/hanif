@@ -39,11 +39,13 @@ class Portofolio extends CI_Controller {
 	
 		// Melakukan escaping pada teks yang akan ditampilkan dalam respons
 		foreach ($portfolios as $portfolio) {
-			$portfolio->id = htmlspecialchars($portfolio->id);
-			$portfolio->description = htmlspecialchars($portfolio->description);
-			$portfolio->title = htmlspecialchars($portfolio->title);
-			$portfolio->link = htmlspecialchars($portfolio->link);
-			$portfolio->gambar = htmlspecialchars($portfolio->gambar);
+			$portfolio->id = $portfolio->id;
+			$portfolio->description = $portfolio->description;
+			$portfolio->title = $portfolio->title;
+			$portfolio->link = $portfolio->link;
+			$portfolio->gambar = $portfolio->gambar;
+			$portfolio->techStack = $portfolio->techStack;
+			$portfolio->kategori = $portfolio->kategori;
 			// Melarikan atribut lain jika diperlukan
 		}
 	

@@ -89,9 +89,10 @@ class Admin extends CI_Controller {
         $title = $this->input->post('title');
         $description = $this->input->post('description');
         $link = $this->input->post('link');
+        $techStack = $this->input->post('techStack');
+        $kategori = $this->input->post('kategori');
 
-
-        $this->Item_model->update_item($id, $title, $description, $link, $gambar);
+        $this->Item_model->update_item($id, $title, $description, $link, $techStack, $kategori, $gambar);
         redirect('admin'); // Redirect ke halaman utama setelah berhasil melakukan update
     }
     
@@ -119,8 +120,10 @@ class Admin extends CI_Controller {
         $title = $this->input->post('title');
         $description = $this->input->post('description');
         $link = $this->input->post('link');
+        $techStack = $this->input->post('techStack');
+        $kategori = $this->input->post('kategori');
 
-        $this->Item_model->save_item($gambar, $title, $description, $link);
+        $this->Item_model->save_item($gambar, $title, $description, $techStack, $kategori, $link);
         redirect('admin'); // Redirect ke halaman utama setelah berhasil melakukan update
     }
   

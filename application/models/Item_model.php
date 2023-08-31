@@ -11,14 +11,16 @@ class Item_model extends CI_Model {
         return $query->result();
     }
 
-    public function save_item($gambar, $title, $description, $link)
+    public function save_item($gambar, $title, $description, $link, $techStack, $kategori)
     {
         // Menyimpan item ke dalam tabel
         $data = array(
             'gambar' => $gambar,
             'title' => $title,
             'description' => $description,
-            'link' => $link
+            'link' => $link,
+            'techStack' => $techStack,
+            'kategori' => $kategori
         );
         $this->db->insert('portolist', $data);
     }
@@ -30,13 +32,15 @@ class Item_model extends CI_Model {
         return $query->row();
     }
 
-    public function update_item($id, $title, $description, $link, $gambar = null)
+    public function update_item($id, $title, $description, $link, $techStack, $kategori, $gambar = null)
     {
         // Mengupdate item berdasarkan ID
         $data = array(
             'title' => $title,
             'description' => $description,
-            'link' => $link
+            'link' => $link,
+            'techStack' => $techStack,
+            'kategori' => $kategori
         );
     
         if ($gambar !== null) {

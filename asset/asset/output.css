@@ -747,6 +747,11 @@ video {
   margin-bottom: auto;
 }
 
+.mx-\[100\%\] {
+  margin-left: 100%;
+  margin-right: 100%;
+}
+
 .mb-10 {
   margin-bottom: 2.5rem;
 }
@@ -883,6 +888,10 @@ video {
   margin-top: -13rem;
 }
 
+.mt-\[0\.15rem\] {
+  margin-top: 0.15rem;
+}
+
 .mt-\[16\%\] {
   margin-top: 16%;
 }
@@ -911,24 +920,12 @@ video {
   margin-top: 6%;
 }
 
-.mt-0 {
-  margin-top: 0px;
-}
-
-.mt-\[0\.15rem\] {
-  margin-top: 0.15rem;
-}
-
 .block {
   display: block;
 }
 
 .inline-block {
   display: inline-block;
-}
-
-.inline {
-  display: inline;
 }
 
 .flex {
@@ -965,6 +962,10 @@ video {
 
 .h-64 {
   height: 16rem;
+}
+
+.h-7 {
+  height: 1.75rem;
 }
 
 .h-8 {
@@ -1009,18 +1010,6 @@ video {
 
 .h-full {
   height: 100%;
-}
-
-.h-5 {
-  height: 1.25rem;
-}
-
-.h-1 {
-  height: 0.25rem;
-}
-
-.h-7 {
-  height: 1.75rem;
 }
 
 .max-h-\[0\.8rem\] {
@@ -1075,6 +1064,10 @@ video {
   width: 1.5rem;
 }
 
+.w-7 {
+  width: 1.75rem;
+}
+
 .w-8 {
   width: 2rem;
 }
@@ -1115,24 +1108,17 @@ video {
   width: 100%;
 }
 
-.w-5 {
-  width: 1.25rem;
-}
-
-.w-1 {
-  width: 0.25rem;
-}
-
-.w-7 {
-  width: 1.75rem;
-}
-
 .min-w-\[13rem\] {
   min-width: 13rem;
 }
 
 .min-w-\[18rem\] {
   min-width: 18rem;
+}
+
+.min-w-max {
+  min-width: -moz-max-content;
+  min-width: max-content;
 }
 
 .max-w-\[11rem\] {
@@ -1350,6 +1336,11 @@ video {
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
+.border-blue-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(59 130 246 / var(--tw-border-opacity));
+}
+
 .border-gray-500 {
   --tw-border-opacity: 1;
   border-color: rgb(107 114 128 / var(--tw-border-opacity));
@@ -1373,6 +1364,10 @@ video {
 .border-white {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
+.border-opacity-0 {
+  --tw-border-opacity: 0;
 }
 
 .bg-black {
@@ -1415,6 +1410,11 @@ video {
   background-color: rgb(28 25 23 / var(--tw-bg-opacity));
 }
 
+.bg-teal-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(45 212 191 / var(--tw-bg-opacity));
+}
+
 .bg-teal-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(15 118 110 / var(--tw-bg-opacity));
@@ -1429,48 +1429,12 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-gray-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(107 114 128 / var(--tw-bg-opacity));
-}
-
-.bg-cyan-900 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(22 78 99 / var(--tw-bg-opacity));
-}
-
-.bg-cyan-800 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(21 94 117 / var(--tw-bg-opacity));
-}
-
-.bg-emerald-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(110 231 183 / var(--tw-bg-opacity));
-}
-
-.bg-emerald-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(167 243 208 / var(--tw-bg-opacity));
-}
-
-.bg-emerald-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(52 211 153 / var(--tw-bg-opacity));
-}
-
-.bg-emerald-900 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(6 78 59 / var(--tw-bg-opacity));
-}
-
-.bg-teal-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(45 212 191 / var(--tw-bg-opacity));
-}
-
 .bg-opacity-10 {
   --tw-bg-opacity: 0.1;
+}
+
+.bg-opacity-30 {
+  --tw-bg-opacity: 0.3;
 }
 
 .bg-opacity-40 {
@@ -1479,10 +1443,6 @@ video {
 
 .bg-opacity-60 {
   --tw-bg-opacity: 0.6;
-}
-
-.bg-opacity-30 {
-  --tw-bg-opacity: 0.3;
 }
 
 .bg-gradient-to-r {
@@ -2083,9 +2043,9 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-teal-700:hover {
+.hover\:bg-red-600:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(15 118 110 / var(--tw-bg-opacity));
+  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
 }
 
 .hover\:font-extrabold:hover {
@@ -2166,16 +2126,6 @@ video {
 
 .hover\:shadow-teal-400:hover {
   --tw-shadow-color: #2dd4bf;
-  --tw-shadow: var(--tw-shadow-colored);
-}
-
-.hover\:shadow-teal-700:hover {
-  --tw-shadow-color: #0f766e;
-  --tw-shadow: var(--tw-shadow-colored);
-}
-
-.hover\:shadow-cyan-900:hover {
-  --tw-shadow-color: #164e63;
   --tw-shadow: var(--tw-shadow-colored);
 }
 
@@ -2340,6 +2290,10 @@ video {
     margin-right: 34rem;
   }
 
+  .md\:mt-0 {
+    margin-top: 0px;
+  }
+
   .md\:mt-1 {
     margin-top: 0.25rem;
   }
@@ -2386,10 +2340,6 @@ video {
 
   .md\:mt-\[7\%\] {
     margin-top: 7%;
-  }
-
-  .md\:mt-0 {
-    margin-top: 0px;
   }
 
   .md\:h-8 {
@@ -3271,6 +3221,11 @@ video {
 }
 
 @media (min-width: 1820px) {
+  .\32xl5\:mx-\[100\%\] {
+    margin-left: 100%;
+    margin-right: 100%;
+  }
+
   .\32xl5\:mr-\[15rem\] {
     margin-right: 15rem;
   }
