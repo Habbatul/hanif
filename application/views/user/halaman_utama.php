@@ -600,7 +600,7 @@ if (isset($error)) {
 						<div class="py-5 md:px-7 px-4 ">
 							<h3 x-text="todo.title" class="text-center mb-3 text-green-950 font-bold text-xl"></h3>
 							<div class="hijauTua rounded-lg">
-								<p x-data="{ description: todo.description }" x-html="(description.length > 140) ? description.slice(0, 140) + '<span class=\'font-bold\'>... Klik Selengkapnya</span>' : description" class="md:min-h-[6rem] min-h-[5rem] text-white py-3 px-4 leading-tight font-normal text-xs md:text-sm text-secondary text-justify">
+								<p x-html="(todo.description.length > 140) ? todo.description.slice(0, 140) + '<span class=\'font-bold\'>... Klik Selengkapnya</span>' : todo.description" class="md:min-h-[6rem] min-h-[5rem] text-white py-3 px-4 leading-tight font-normal text-xs md:text-sm text-secondary text-justify">
 								</p>
 							</div>
 						</div>
