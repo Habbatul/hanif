@@ -519,7 +519,7 @@
 
 			const titleError = document.getElementById('titleError2');
 			const descriptionError = document.getElementById('descriptionError2');
-			
+
 			const linkError = document.getElementById('linkError2');
 
 			let isValid = true;
