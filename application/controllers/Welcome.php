@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Welcome extends CI_Controller
+{
 
 	/**
 	 * Index Page for this controller.
@@ -20,7 +21,7 @@ class Welcome extends CI_Controller {
 	 */
 	public function __construct()
 	{
-    parent::__construct();
+		parent::__construct();
 	}
 
 	public function index()
@@ -28,9 +29,10 @@ class Welcome extends CI_Controller {
 		$data['error'] = $this->input->get('error');
 		$this->load->view('user/halaman_utama', $data);
 	}
-  
-  	public function submitForm() {
-		if( ($this->input->post('kirim') !== null)){
+
+	public function submitForm()
+	{
+		if (($this->input->post('kirim') !== null)) {
 			$this->load->database();
 
 			$this->load->model('Message_model');
@@ -50,10 +52,8 @@ class Welcome extends CI_Controller {
 			} else {
 				redirect('/?error= Kamu hanya dapat mengirim pesan sekali dalam sehari');
 			}
-			
-		}else{
+		} else {
 			redirect('/?error= CSRF token kamu tidak valid');
 		}
-    }
-
+	}
 }

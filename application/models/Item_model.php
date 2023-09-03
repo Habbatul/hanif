@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Item_model extends CI_Model {
+class Item_model extends CI_Model
+{
 
     public function get_items()
     {
@@ -42,11 +43,11 @@ class Item_model extends CI_Model {
             'techStack' => $techStack,
             'kategori' => $kategori
         );
-    
+
         if ($gambar !== null) {
             $data['gambar'] = $gambar;
         }
-    
+
         $this->db->where('id', $id);
         $this->db->update('portolist', $data);
     }

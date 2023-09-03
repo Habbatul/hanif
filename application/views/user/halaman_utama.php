@@ -208,7 +208,7 @@ if (isset($error)) {
 			<!-- ini adalah untuk social card -->
 			<div class="scrollAnimate flex flex-col justify-items-end items-end md:w-[42%] mt-[4.3rem] md:mt-1">
 				<div class="my-auto">
-				<img class=" w-[100%] lg:mr-[-1%] hover:cursor-pointer hover:blur-sm transition-all duration-300" src="SocialCard/github-card.php" alt="" @click="window.open('https://github.com/Habbatul', '_blank')">
+					<img class=" w-[100%] lg:mr-[-1%] hover:cursor-pointer hover:blur-sm transition-all duration-300" src="SocialCard/github-card.php" alt="" @click="window.open('https://github.com/Habbatul', '_blank')">
 					<img class=" w-[100%]  lg:mr-[-1%] hover:cursor-pointer hover:blur-sm transition-all duration-300 xl:my-[-2.4rem] 2xl:my-[-2.8rem] my-[-1.5rem]" src="SocialCard/linkedin-card.php" alt="" @click="window.open('https://www.linkedin.com/in/habbatul/', '_blank')"">
 					<img class=" w-[100%] lg:mr-[-1%] hover:cursor-pointer hover:blur-sm transition-all duration-300" src="SocialCard/instagram-card.php" alt="" @click="window.open('https://www.instagram.com/hq.han/', '_blank')">
 				</div>
@@ -438,7 +438,7 @@ if (isset($error)) {
 		</section>
 
 		<!-- Modal untuk hapus Selesai -->
-		
+
 
 
 		<!-- modal detail -->

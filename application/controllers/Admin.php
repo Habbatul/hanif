@@ -1,47 +1,49 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class Admin extends CI_Controller
+{
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/userguide3/general/urls.html
-	 */
-	public function __construct()
-	{
-    parent::__construct();
-    $this->load->database();
-    $this->load->model('Item_model');
-    $this->load->model('User_model');
-    $this->load->library('upload');
-    $this->load->library('session');
-    $this->load->library('form_validation');
-    $this->load->helper('form');
-    $this->load->model('Message_model');
-	}
+    /**
+     * Index Page for this controller.
+     *
+     * Maps to the following URL
+     * 		http://example.com/index.php/welcome
+     *	- or -
+     * 		http://example.com/index.php/welcome/index
+     *	- or -
+     * Since this controller is set as the default controller in
+     * config/routes.php, it's displayed at http://example.com/
+     *
+     * So any other public methods not prefixed with an underscore will
+     * map to /index.php/welcome/<method_name>
+     * @see https://codeigniter.com/userguide3/general/urls.html
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->database();
+        $this->load->model('Item_model');
+        $this->load->model('User_model');
+        $this->load->library('upload');
+        $this->load->library('session');
+        $this->load->library('form_validation');
+        $this->load->helper('form');
+        $this->load->model('Message_model');
+    }
 
-	public function index()
-	{
+    public function index()
+    {
         if (!$this->session->userdata('admin')) {
             redirect('/');
-        }else{
+        } else {
             $data['items'] = $this->Item_model->get_items();
             $this->load->view('admin/halaman_utama', $data);
         }
-	}
+    }
 
-    public function process_login() {
+    public function process_login()
+    {
         // Menerima input username dan password dari form login
         $username = $this->input->post('username');
         $password = $this->input->post('password');
@@ -63,7 +65,8 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function logout() {
+    public function logout()
+    {
         // Menghapus data pengguna dari session saat logout
         $this->session->unset_userdata('admin');
         redirect('/');
@@ -95,14 +98,16 @@ class Admin extends CI_Controller {
         $this->Item_model->update_item($id, $title, $description, $link, $techStack, $kategori, $gambar);
         redirect('admin'); // Redirect ke halaman utama setelah berhasil melakukan update
     }
-    
-    public function delete_item(){
+
+    public function delete_item()
+    {
         $id = $this->input->post('deleteItem');
         $this->Item_model->delete_item($id);
         redirect('admin'); // Redirect ke halaman utama setelah berhasil melakukan update
     }
 
-    public function save_item(){
+    public function save_item()
+    {
         $gambar = $_FILES['gambar'];
         $croppedImageData = $this->input->post('croppedImageData');
 
@@ -126,34 +131,34 @@ class Admin extends CI_Controller {
         $this->Item_model->save_item($gambar, $title, $description, $techStack, $kategori, $link);
         redirect('admin'); // Redirect ke halaman utama setelah berhasil melakukan update
     }
-  
+
     //register = ubah data ya
-    public function register(){
+    public function register()
+    {
         if (!$this->session->userdata('admin')) {
             redirect('/');
-        }else{
+        } else {
             //kalo ada register
-            if(isset($_POST['register'])){
+            if (isset($_POST['register'])) {
                 $this->form_validation->set_rules('username', 'username', 'required');
                 $this->form_validation->set_rules('password', 'password', 'regex_match[/[0-9]/]');
 
-    
+
                 $this->form_validation->set_message('required', 'pastikan %s sudah diisi');
                 $this->form_validation->set_message('regex_match', '%s harus mengandung angka numerik');
-    
+
                 if ($this->form_validation->run() == false) {
                     // Validasi gagal, redirect kembali ke halaman register
-                  	$data['message'] = $this->Message_model->GetMessage();
+                    $data['message'] = $this->Message_model->GetMessage();
                     $data['data'] = $this->User_model->GetUsername();
                     $this->load->view('admin/halaman_register', $data);
-                    
                 } else {
                     $id = $this->input->post('id');
                     $username = $this->input->post('username');
                     $passwordBefore = $this->input->post('password');
 
                     //kalo password tidak kosong enkripsi kalo kosong isi null
-                    if($this->input->post('password') != null)
+                    if ($this->input->post('password') != null)
                         $password = password_hash($passwordBefore, PASSWORD_BCRYPT);
                     else
                         $password = null;
@@ -162,21 +167,18 @@ class Admin extends CI_Controller {
                     $this->User_model->update_admin($id, $username, $password);
                     redirect('register');
                 }
-            }else{
+            } else {
                 $data['data'] = $this->User_model->GetUsername();
                 $data['message'] = $this->Message_model->GetMessage();
                 $this->load->view('admin/halaman_register', $data);
             }
-
         }
     }
-    
-    public function deleteMessage(){
-        $id= $this->input->post('id');
+
+    public function deleteMessage()
+    {
+        $id = $this->input->post('id');
         $this->Message_model->deleteMessage($id);
         redirect('register');
     }
-
-
-
 }

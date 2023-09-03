@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Portofolio extends CI_Controller {
+class Portofolio extends CI_Controller
+{
 
 	/**
 	 * Index Page for this controller.
@@ -20,23 +21,23 @@ class Portofolio extends CI_Controller {
 	 */
 	public function __construct()
 	{
-    parent::__construct();
-    $this->load->database();
+		parent::__construct();
+		$this->load->database();
 	}
 
 	public function index()
 	{
-          // Mengizinkan akses dari semua asal (URL)
-      $allowedOrigin = 'https://habbatul.github.io';
+		// Mengizinkan akses dari semua asal (URL)
+		$allowedOrigin = 'https://habbatul.github.io';
 		header('Access-Control-Allow-Origin: ' . $allowedOrigin);
-      
-      
+
+
 		$response['code'] = 200;
 		$response['status'] = 'success';
-		
+
 		// Mengambil data portofolio dari database
 		$portfolios = $this->db->order_by('id', 'desc')->get('portolist')->result();
-	
+
 		// Melakukan escaping pada teks yang akan ditampilkan dalam respons
 		foreach ($portfolios as $portfolio) {
 			$portfolio->id = $portfolio->id;
@@ -48,9 +49,9 @@ class Portofolio extends CI_Controller {
 			$portfolio->kategori = $portfolio->kategori;
 			// Melarikan atribut lain jika diperlukan
 		}
-	
+
 		$response['data'] = $portfolios;
-	
+
 		// Mengirim respons dalam format JSON
 		$this->output
 			->set_content_type('application/json')
